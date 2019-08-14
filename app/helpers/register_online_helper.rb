@@ -1,0 +1,2 @@
+module RegisterOnlineHelper
+end

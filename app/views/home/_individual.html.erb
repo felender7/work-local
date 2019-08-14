@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-8">
+        <div class="jumbotron jumbotron-fluid bg-primary text-light">
+          <div class="container">
+        <% if current_user.cvs.empty? %>
+          <h3 class="display-4">Hi, <%=current_user.name%></h3>
+          <p class="lead">You haven't created a cv yet!</p>
+          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%"></div>
+               <%=link_to new_cv_path , class:'btn btn-warning' do %>
+               🚀 GET STARTED
+               <%end%>
+             <%else%>
+            <h3 class="display-4">Hi, <%=current_user.name%></h3>
+            <p class="lead">Welcome to @work job placement</p>
+            <span class="badge bg-warning"><i class="fas fa-user-lock"></i> #Work00<%=current_user.id%></span>
+            <span class="badge bg-success text-light">
+                <i class="far fa-building"></i>
+              <%=current_user.profile_type%></span>
+
+            <span class="badge bg-secondary text-light"> <i class="far fa-envelope-open"></i> <%=current_user.email%></span> <br> <br>
+
+          <%end%>
+        </div>
+        </div>
+      </div>
+      <hr>
+      <div class="col-lg-4">
+        <%=render'home/templates/announcement'%>
+      </div>
+</div>
+  <hr>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="shadow-sm p-3 mb-5 bg-light">
+      <%if current_user.cvs.exists? %>
+      <h4 class="text-muted">Companies that are hiring</h4>
+      <hr>
+           <%=render'home/templates/open_companies'%>
+        <%else%>
+           <p>Hi,complete your resume to see companies that are hiring</p>
+        <%end%>
+    </div>
+  </div>
+</div>
+</div>

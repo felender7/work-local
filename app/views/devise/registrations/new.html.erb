@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row ml-auto mr-auto text-muted">
+    <div class="col-lg-6 col-md-4">
+    <div class="jumbotron border-top-reviews">
+      <h1 class="">Dream Job</h1>
+      <p>One step closer with @work placement portal.</p>
+      <div style="margin-left:18px">
+          <i class="text-primary fas fa-check-circle"></i> Once off payment! <br>
+          <i class="text-primary fas fa-check-circle"></i> Like it? Save and apply later! <br>
+          <i class="text-primary fas fa-check-circle"></i> Don't just find: be found. <br>
+          <i class="text-primary fas fa-check-circle"></i> Pick up where you left off from any device.
+      </div>
+    </div>
+  </div>
+    <div class="col-lg-6 col-md-6 shadow-sm p-3 mb-5 bg-light border-top-reviews ">
+      <h3>Create an account</h3>
+       <hr>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Full Name" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: false, class: 'form-control', placeholder: "Email Address" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.select :profile_type,['Individual', 'Business'],{}, autofocus: false, class: 'form-control'%>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm Password' %>
+        </div>
+        <h3>Payment</h3>
+          <hr>
+        <div class="form-group">
+          <%= f.submit "Sign up", class: "btn btn-primary btn-block btn-lg" %>
+        </div>
+      <% end %>
+
+      <div class="text-center">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

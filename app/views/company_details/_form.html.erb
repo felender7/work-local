@@ -1,0 +1,90 @@
+<%= form_with(model: company_detail, local: true) do |form| %>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-lg-8 ">
+    <div class="shadow-sm p-3 mb-5 bg-light">
+
+      <%= render 'errors', company_detail: @company_detail %>
+
+      <div class="form-group ">
+        <label for="company_name" class="text-muted"><strong>Company Name</strong></label>
+        <%= form.text_field :company_name, class: 'form-control' , placeholder:'Trading name', required: :required%>
+      </div>
+
+      <div class="form-group ">
+        <label for="description" class="text-muted"> <strong>Description</strong></label>
+        <%= form.text_area :description, class: 'form-control' , placeholder:'Tell us about the company', required: :required %>
+      </div>
+
+      <div class="form-group">
+        <label for="Email" class="text-muted"><strong>Email</strong></label>
+        <%= form.email_field :email, class: 'form-control' , placeholder:'Company email', required: :required %>
+      </div>
+
+      <div class="form-group">
+        <label for="registration" class="text-muted"><strong>Enterprise No.</strong></label>
+        <%= form.text_field :registration, class: 'form-control' , placeholder:'Example: 2017/527222/07 ', required: :required%>
+      </div>
+
+      <div class="form-group">
+        <label for="tel" class="text-muted"><strong>Tel</strong></label>
+        <%= form.text_field :tel, class: 'form-control' , placeholder:'Contact number' ,required: :required %>
+      </div>
+
+    <div class="form-group ">
+        <label for="industry" class="text-muted"><strong>Industry</strong></label>
+        <%= form.select :industry,['[All]', 'Advertising, Communication & PR','Agriculture, Forestry & Fishing','Armed Forces', 'Art, Culture, Entertainment & Sport','Auditing/Accounting','Automotive Sector','Aviation & Aerospace','Banking','Building & Construction','Call Centre Industry','Chemical, Petrochemical, Oil & Gas','Conservation & Environment','Consulting','Distribution, Transport & Logistics','Education & Training','Electricity, Energy & Water Supply','Engineering','Financial Services', 'Fishing','FMCG & Supply Management','Food & Beverages','Freight, Import & Export','Government','Handcraft & Furniture','Health & Fitness','Hospitality & Catering','HR Services, Recruitment & Selection','Insurances','IT & Internet','Legal','Manufacturing','Media, Audiovisual & Publishing','Medical Technology','Medical, Health & Social Care','Mining & Quarrying','Non-Profit & Voluntary Sector','Office Automation','Other Sectors & Industries','Pharmaceutical Sector','Property & Real Estate','Public Administration','Public Administration & Defence','Public Services','Publishing, Printing & Reproduction','Recreational, Cultural & Sporting Activities','Scientific, Research & Development','Steel Industry','Telecommunication Services','Textiles, Clothing, Leather & Fashion','Travel & Tourism','Wholesale & Retail Trade'], {prompt:"Select preferred job industry"},class: 'form-control' %>
+      </div>
+
+
+
+      <div class="form-group jumbotron jumbotron-sm">
+        <small id="passwordHelpBlock" class="form-text text-danger">
+          UPLOAD LOGO
+        </small>
+        <%= form.file_field :company_logo, class: 'form-control-file', accept: 'image/jpeg, image/png', direct_upload: true %>
+         <hr>
+        <small id="passwordHelpBlock" class="form-text text-danger">
+          *UPLOAD CK
+        </small>
+        <%= form.file_field :ck, class: 'form-control-file' ,accept: 'application/pdf', direct_upload: true%>
+        <small id="passwordHelpBlock" class="form-text text-danger">
+          *Only Pdf files are allowed.
+        </small>
+        <hr>
+        <small id="passwordHelpBlock" class="form-text text-danger">
+          *UPLOAD BEE
+        </small>
+        <%= form.file_field :bee, class: 'form-control-file' , accept: 'application/pdf', direct_upload: true%>
+        <small id="passwordHelpBlock" class="form-text text-danger">
+          *Only Pdf files are allowed.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <% if company_detail.persisted? %>
+          <div class="float-right">
+            <%= link_to 'Destroy', company_detail, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+
+        <%= form.button(type: "submit", class: "btn btn-success" , data: {disable_with:"<i class='fa fa-spinner fa-spin'></i> Saving..." .html_safe }) do %>
+           <i class="fas fa-save"></i> SAVE
+        <% end %>
+
+        <% if company_detail.persisted? %>
+          <%= link_to "Cancel", company_detail, class: "btn btn-link" %>
+        <% else %>
+          <%= link_to "Cancel", company_details_path, class: "btn btn-link" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <%=render'shared/tracking'%>
+  </div>
+</div> <!--row end !-->
+</div><!--container end !-->
+<% end %>

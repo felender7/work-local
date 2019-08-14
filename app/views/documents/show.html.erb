@@ -1,0 +1,58 @@
+
+<div class="container-fluid">
+  <div class="shadow-sm p-3 bg-light border-top-reviews">
+      <div class="row">
+        <div class="col-md-8 text-muted">
+          <h4><i class="far fa-list-alt"></i> DOCUMENT - <%= @document.title %> </h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+        </div>
+      </div>
+  </div>
+<div class="shadow-sm p-3 mb-5 bg-white">
+<div class="row">
+  <div class="col-lg-8">
+    <%=link_to documents_path, class:'btn btn-primary' do %>
+    <i class="fas fa-list"></i> View All Documents
+    <%end%>
+    <%= link_to new_document_path, class: 'btn btn-primary' do %>
+      <i class="fas fa-plus-square"></i> Add New Document
+    <% end %>
+     <br> <br>
+    <div class="table-responsive-sm">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>File Name</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="active">
+         </tbody>
+            <tr>
+              <td width="100%"><strong class="text-muted"><%= @document.title %></strong></td>
+              <td><%=link_to @document.file, combine_options: { gravity: 'center', draw: 'image Over 0,0 0,0 "' + Document::WATERMARK_PATH.to_s + '"' } ,download:'' do %>
+                <span class="badge bg-primary text-light"><i class="fas fa-file-download"> </i> </span>
+               <%end%>
+              </td>
+            </tr>
+        </table>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <%=render'shared/tracking'%>
+  </div>
+</div>
+
+    <hr>
+    <%= link_to edit_document_path(@document) do %>
+       <i class="fas fa-edit"></i>
+    <%end%> |
+    <%=link_to summary_path, class:'btn btn-primary btn-sm' do %>
+      NEXT - <i class="far fa-list-alt"></i> SUMMARY
+    <%end%>
+
+  </div>
+</div>

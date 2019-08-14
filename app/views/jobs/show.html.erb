@@ -1,0 +1,6 @@
+
+<%if current_user.profile_type == "Individual"%>
+<%=render'jobs/templates/individual'%>
+  <%else%>
+<%=render'jobs/templates/company'%>
+<%end%>

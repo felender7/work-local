@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render 'shared/head' %>
+  </head>
+
+  <body>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/notices' %>
+    <%if user_signed_in?%>
+    <div data-pjax-container class="mt-5" >
+        <%= yield %>
+    </div>
+    <%else%>
+      <%= yield %>
+    <%end%>
+     <%= render 'shared/footer' %>
+
+  </body>
+
+
+</html>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('a[disabled=disabled]').click(function(event){
+      event.preventDefault(); // Prevent link from following its href
+  });
+});
+</script>

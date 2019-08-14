@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="shadow-sm p-3 bg-light">
+      <div class="row">
+        <div class="col-md-8 text-muted">
+          <h4><i class="far fa-list-alt"></i> Job Summary</h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+        </div>
+      </div>
+  </div>
+</div>
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-lg-2">
+            <% if  @job.company_detail.company_logo.attached? %>
+              <%= image_tag  @job.company_detail.company_logo.variant(resize:"150x150"), height: 100, width: 100, class:"bd-placeholder-img mr-2 rounded img-border " %>
+            <%else%>
+            <svg class="bd-placeholder-img mr-2 rounded" width="100" height="100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect fill="#007bff" width="100%" height="100%"/><text fill="#fff" dy=".3em" x="40%" y="50%"><%= @job.company_detail.company_name[0..1].upcase %></text></svg>
+            <%end%>
+          </div>
+          <div class="col">
+            <span class="text-muted"><%=@job.company_detail.company_name.upcase%>  </span>
+            <h3 class="text-primary"><%= @job.title.titlecase %></h3>
+                <ul class="list-inline">
+                  <small class="text-muted">
+                  <li class="list-inline-item"><i class="fas fa-map-marker-alt"></i> <%= @job.city %></li>
+                  <li class="list-inline-item"><i class="fas fa-clock"></i> <%= @job.work_type %></li>
+                  <li class="list-inline-item"><i class="fas fa-briefcase"></i> <%= @job.contract_type %></li>
+                  <li class="list-inline-item"> <i class="fas fa-calendar-alt"></i> Published: <%=time_ago_in_words(@job.created_at) +" ago" %></li>
+                   </small>
+                </ul>
+              <span class="badge bg-primary text-light">
+                <% if @job.salary_type =="Negotiable"%>
+                 <%= @job.salary_type %>
+                <%else%>
+                R<%= @job.salary %> - <%= @job.salary_type %>
+                <%end%>
+              </span> <br><br>
+              <a href="#" class="btn btn-primary">Apply Now</a>
+              <a href="#" class="btn btn-secondary"><i class="fas fa-share-alt"></i> </a>
+              <a href="#" onclick="printFunction()" class="btn btn-secondary"><i class="fas fa-print"></i> </a></div>
+
+      </div>
+      </div><!--card-header-end-->
+      <div class="card-body">
+      <strong class="text-primary">DUTIES </strong> <br>
+        <span class="text-muted"><%= @job.duties.html_safe %></span> <br> <br>
+
+
+      <strong class="text-primary">REQUIREMENTS </strong> <br>
+       <span class="text-muted"><%= @job.requirements.html_safe %></span> <br>
+
+      </div>
+    </div>
+  </div><!--col-lg-8 end-->
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-body text-center">
+        <% if  @job.company_detail.company_logo.attached? %>
+          <%= image_tag  @job.company_detail.company_logo.variant(resize:"150x150"), height: 100, width: 100, class:"bd-placeholder-img mr-2 rounded img-border " %>
+        <%else%>
+        <svg class="bd-placeholder-img mr-2 rounded" width="100" height="100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect fill="#007bff" width="100%" height="100%"/><text fill="#fff" dy=".3em" x="40%" y="50%"><%= @job.company_detail.company_name[0..1].upcase %></text></svg>
+        <%end%> <br> <br>
+        <strong class="text-muted "><%=@job.company_detail.company_name.upcase%></strong> <br>
+             <span class="badge bg-primary text-light"><%=@job.company_detail.industry %></span>
+
+              <hr>
+          <%=link_to 'Company Profile', @job.company_detail, class:"btn btn-sm btn-secondary"%>
+      </div>
+    </div>
+  </div>
+  </div><!--row end-->
+  </div><!--container end-->
+  <script>
+  function printFunction() {
+    window.print();
+  }
+  </script>

@@ -1,0 +1,15 @@
+<ul class="list-inline">
+   <% @company_details.each do |company_detail|%>
+   <li class="list-inline-item">
+     <% if company_detail.company_logo.attached? %>
+     <%=link_to  company_detail do %>
+       <%= image_tag company_detail.company_logo.variant(resize:"130x130"), height: 100, width: 100,class:"rounded margin-bottom-20 img-border" %>
+      <%end%>
+     <%else%>
+     <%=link_to company_detail do %>
+     <svg class="rounded margin-bottom-20 img-border" width="100" height="100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect fill="#007bff" width="100%" height="100%"/><text fill="#fff" dy=".3em" x="40%" y="50%"><%= company_detail.company_name[0..1].upcase %> </text> </svg>
+     <%end%>
+     <%end%>
+   </li>
+   <%end%>
+</ul>

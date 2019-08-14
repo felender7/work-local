@@ -1,0 +1,76 @@
+<div class="container-fluid">
+  <div class="shadow-sm p-3 bg-primary">
+      <div class="row">
+        <div class="col-md-8 text-light">
+          <h4><i class="far fa-list-alt"></i> COMPANY PROFILE</h4>
+          <%= @company_detail.company_name.upcase %> - <%= @company_detail.registration %><br>
+          <small class="badge bg-light text-primary"><%= @company_detail.industry.upcase %></small>
+        </div>
+        <div class="col-md-4">
+          <a href="/" class="float-right text-warning"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+        </div>
+      </div><!-- end row-->
+  </div><!-- end box-shadow-->
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title text-primary ">About us</h5>
+    <p class="card-text text-muted text-justify"><%= @company_detail.description.capitalize %></p>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header text-primary">
+        Contacts
+      </div>
+      <div class="card-body text-muted">
+        <p class="card-text"><i class="fas fa-envelope-square"></i> <%= @company_detail.email %></p>
+        <p class="card-text"><i class="fas fa-phone-square"> </i>  <%= @company_detail.tel %></p>
+      </div>
+    </div> <br>
+    <div class="card">
+      <div class="card-header text-primary">
+        Location
+      </div>
+      <div class="card-body text-muted">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header text-primary">
+         Most Recent Jobs <span class="badge bg-primary text-light"> <%=@jobs_count_profile%> </span>
+      </div>
+        <%@jobs.each do |job|%>
+          <div class="shadow-sm p-3 bg-light">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+
+                <% if job.company_detail.company_logo.attached? %>
+                  <%= image_tag  job.company_detail.company_logo.variant(resize:"150x150"), height: 85, width: 85, class:"bd-placeholder-img mr-2 rounded img-border " %>
+                <%else%>
+                <svg class="bd-placeholder-img mr-2 rounded" width="85" height="85" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect fill="#007bff" width="100%" height="100%"/><text fill="#fff" dy=".3em" x="40%" y="50%"><%= job.company_detail.company_name[0..1].upcase %></text></svg>
+                <%end%>
+              </li>
+              <li class="list-inline-item">  <strong><%=link_to job.title.titlecase, job%> </strong><br>
+                <small>@<%=job.company_detail.company_name%> <br>
+                  <span class="badge bg-primary text-light"><i class="fas fa-calendar-alt"></i> <%=time_ago_in_words(job.created_at) +" ago" %></span>
+                  <span class="badge bg-primary text-light"><i class="fas fa-map-marker-alt"></i> <%=job.city %></span>
+                </small></li>
+            </ul>
+
+          </div>
+        </ul>
+
+       <%end%>
+  </div>
+  <br>
+  <%= will_paginate @jobs, list_classes: %w(pagination justify-content-end),renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
+</div> <!-- end container-->
+</div>
+</div>

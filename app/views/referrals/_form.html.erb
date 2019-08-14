@@ -1,0 +1,58 @@
+
+<%= form_with(model: referral, local: true) do |form| %>
+  <% if referral.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(referral.errors.count, "error") %> prohibited this referral from being saved:</h2>
+
+      <ul>
+      <% referral.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="shadow-sm p-3 mb-3 bg-light border-top-reviews">
+  <div class="form-group">
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <%= form.text_field :institution, class: 'form-control', placeholder:'Institution' %>
+        </div>
+
+        <div class="form-group col-md-3">
+          <%= form.text_field :contact_person, class: 'form-control', placeholder:'Contact Person' %>
+        </div>
+
+        <div class="form-group col-md-3">
+          <%= form.text_field :position, class: 'form-control' , placeholder:'Position'%>
+        </div>
+        <div class="form-group col-md-3">
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">+27</label>
+            </div>
+            <%= form.text_field :contact_number, class: 'form-control', placeholder:'Contact Number',  required: :required, maxlength:"9" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <% if referral.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', referral, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.button(type: "submit", class: "btn btn-primary" , data: {disable_with:"<i class='fa fa-spinner fa-spin'></i> Saving..." .html_safe }) do %>
+       <i class="fas fa-save"></i> SAVE
+    <% end %>
+
+    <% if referral.persisted? %>
+      <%= link_to "Cancel", referral, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", referrals_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>
+</div>

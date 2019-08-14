@@ -1,0 +1,23 @@
+
+
+<% if current_user.company_details.empty? %>
+  <h3 class="display-4">Hi,<%=current_user.name%></h3>
+  <p class="lead">You haven't added company details yet! Click here to <a href="/company_details/new">get started</a></p>
+<%else%>
+
+<% @company_details.each do |company_detail| %>
+<%if current_user && company_detail.user == current_user%>
+  <%= content_tag :tr, id: dom_id(company_detail), class: dom_class(company_detail) do %>
+      <h3 class="display-4">Hi, <%=current_user.name%></h3>
+      <%= link_to company_detail , class:'btn btn-success'   do%>
+         <i class="far fa-list-alt"></i> VIEW COMPANY DETAILS
+      <% end%>
+      <hr>
+      <span class="text-muted">
+        Created| <i class="fas fa-clock"></i> <%=time_ago_in_words(company_detail.created_at) +" ago" %>
+      </span>
+      <%else%>
+  <% end %>
+  <% end %>
+<% end %>
+<% end %>

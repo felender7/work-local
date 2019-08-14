@@ -1,0 +1,11 @@
+
+<% if company_detail.errors.any? %>
+  <div id="error_explanation" class="bg-success text-light p-3 mb-5">
+    <h4><%= pluralize(company_detail.errors.count, "error") %> prohibited this company detail from being saved:</h4>
+    <ul>
+    <% company_detail.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

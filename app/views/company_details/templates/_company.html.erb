@@ -1,0 +1,108 @@
+
+<div class="container-fluid">
+  <div class="shadow-sm p-3 mb-5 bg-light">
+      <div class="row">
+        <div class="col-md-8 text-muted">
+          <h4><i class="far fa-list-alt"></i> COMPANY DETAILS SUMMARY </h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+        </div>
+      </div>
+  </div>
+<div class="shadow-sm p-3 mb-5 bg-white">
+<div class="row">
+  <div class="col-lg-2">
+    <% if @company_detail.company_logo.attached? %>
+      <%= image_tag @company_detail.company_logo.variant(resize:"150x150"), height: 150, width: 150, class:"rounded margin-bottom-20 thumbnail" %>
+    <%else%>
+    <svg class="bd-placeholder-img mr-2 rounded" width="150" height="150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: company logo"><title>company logo</title><rect fill="#007bff" width="100%" height="100%"/><text fill="#fff" dy=".3em" x="45%" y="50%"><%=  @company_detail.company_name[0..1].upcase %></text></svg>
+    <%end%>
+
+  </div>
+  <div class="col-lg-8">
+    <div class="table-responsive-sm">
+    <table class="table">
+      <tbody>
+        <tr class="d-flex"></tr>
+     </tbody>
+       <h4 class="text-primary">DETAILS OF THE PERSON IN CHARGE</h4>
+       <tr>
+        <td><strong>Full Name:</strong></td>
+        <td><%=current_user.name.titlecase%></td>
+      </tr>
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td><%=current_user.email%></td>
+      </tr>
+   </table> <!--person details table end-->
+
+   <table class="table table-sm">
+     <tbody>
+       <tr class="d-flex"></tr>
+    </tbody>
+      <h4 class="text-primary">COMPANY DETAILS</h4>
+      <tr>
+         <td><strong>Company Name:</strong></td>
+         <td><%= @company_detail.company_name.titlecase %></td>
+       </tr>
+
+       <tr>
+         <td><strong>Email:</strong></td>
+         <td><%= @company_detail.email %></td>
+       </tr>
+
+       <tr>
+         <td><strong>Tap Number:</strong></td>
+         <td><span class="badge bg-primary text-light"><i class="fas fa-user-lock"></i> #TAP00<%=current_user.id%></span></td>
+       </tr>
+
+        <tr>
+          <td><strong>Enterprise no:</strong></td>
+          <td><%= @company_detail.registration %></td>
+        </tr>
+
+        <tr>
+          <td><strong>Tel:</strong></td>
+          <td><%= @company_detail.tel %></td>
+        </tr>
+
+        <tr>
+          <td><strong>Industry:</strong></td>
+          <td><%= @company_detail.industry.titlecase %></td>
+        </tr>
+
+  </table> <!--company_detail details table end-->
+  <span class="badge bg-primary text-light">About the company</span> <br>
+   <p class="text-justify text-muted"><%= @company_detail.description.capitalize %></p>
+
+   <table class="table">
+     <tbody>
+       <tr class="d-flex"></tr>
+    </tbody>
+      <h4 class="text-primary">DOCUMENTS</h4>
+      <tr>
+         <td width="100%"><strong>CK:</strong></td>
+         <td><span class="badge bg-primary text-light" ><%= link_to @company_detail.ck, download:'' do %>
+           <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" ></i> DOWNLOAD </span>
+           <%end%></td>
+       </tr>
+
+       <tr>
+         <td width="100%"><strong>BEE certificate:</strong></td>
+         <td><span class="badge bg-primary text-light" ><%= link_to @company_detail.bee, download:'' do %>
+           <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" > </i> DOWNLOAD </span>
+           <%end%></td>
+       </tr>
+  </table> <!--documents table end-->
+ </div>
+
+
+    <%= link_to edit_company_detail_path(@company_detail) do %><i class="fas fa-edit"></i><%end%>
+       |
+    <%=link_to new_job_path, class:'btn btn-success btn-sm' do %>NEXT - POST A JOB<%end%>
+
+  </div><!--col-lg-8 end-->
+</div>
+</div>
+</div>

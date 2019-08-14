@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="shadow-sm p-3 mb-5 bg-light ">
+      <div class="row">
+        <div class="col-md-8 text-muted">
+          <h4><i class="far fa-list-alt"></i> Reviews</h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/users" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+        </div>
+      </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-lg-12">
+    <%if @reviews.blank?%>
+      <p class="text-muted">No reviews just yet, would you like to add the first!</p>
+      <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning"%>
+      <%else%>
+      <%@reviews.each do|review|%>
+    <%if current_user && review.user == current_user%>
+      <div class="my-3 p-3 bg-white rounded shadow-sm border-top-reviews" >
+       <div class="reviews text-muted">
+          <div class="star-rating" data-score=<%= review.rating %> ></div>
+          <p><%=review.comment%></p>
+       </div>
+       <hr>
+       </div>
+      <%end%>
+    <%end%>
+    <%end%>
+    </div>
+  </div>
+</div>

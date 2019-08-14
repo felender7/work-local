@@ -1,0 +1,22 @@
+<% if current_user.cvs.empty? %>
+  <h3 class="display-4">Hi,<%=current_user.name%></h3>
+  <p class="lead">You haven't added resume yet! Click here to <a href="/cvs/new">get started</a></p>
+<%else%>
+
+
+<% @cvs.each do |cv| %>
+  <%if current_user && cv.user == current_user%>
+    <%= content_tag :tr, id: dom_id(cv), class: dom_class(cv) do %>
+        <h3 class="display-4"><%=current_user.name%></h3>
+        <%= link_to cv , class:'btn btn-primary'   do%>
+           <i class="far fa-list-alt"></i> CURRICULUM VITEA
+        <% end%>
+        <hr>
+        <small class="text-muted">
+          Created: <i class="fas fa-calendar-alt"></i> <%=time_ago_in_words(cv.created_at) +" ago" %> | Last updated: <i class="fas fa-clock"></i> <%=time_ago_in_words(cv.updated_at) +" ago" %>
+        </small>
+  
+    <% end %>
+    <% end %>
+<% end %>
+<%end%>

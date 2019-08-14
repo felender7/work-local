@@ -1,0 +1,6 @@
+
+<%if current_user.profile_type == "Individual"%>
+<%=render'company_details/templates/individual'%>
+  <%else%>
+<%=render'company_details/templates/company'%>
+<%end%>

@@ -1,0 +1,153 @@
+<%= form_with(model: cv, local: true) do |form| %>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-lg-8">
+    <div class="shadow-sm p-3 mb-5 bg-light">
+      <%= render 'errors', cv: @cv %>
+      <h4 class="text-muted"> <i class="far fa-user"></i> <%=current_user.name%></h4>
+      <span class="badge bg-primary text-light">
+      <div class="form-check form-check-inline">
+        <%= form.radio_button(:identification_type, "ID", id:'id_number', class:'form-check-input') %>
+         <label class="form-check-label" for="form-check-label">ID -- </label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <%= form.radio_button(:identification_type, "Passport", id:'Passport_number', class:'form-check-input') %>
+        <label class="form-check-label" for="Passport">-- Passport</label>
+      </div>
+     </span>
+      <div class="form-group">
+        <%=form.text_field :id_passport, class:'form-control', placeholder:'ID/Passport',required: :required%>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">+27</label>
+          </div>
+          <%= form.text_field :phone, class: 'form-control', placeholder:'Phone',  required: :required, maxlength:"9" %>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= form.select :gender,['Male', 'Female'],{prompt: "Select Gender"}, class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-md-6">
+          <%= form.select :ethnicity,['Asian', 'Black','Coloured','Indian','White'],{prompt:"Select Ethnicity"}, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= form.select :disability,['Not disabled', 'Disabled'], {prompt:"Do you have a Disability"},class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-md-6">
+          <%= form.date_field :date_of_birth, class: 'form-control'%>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= form.select :job_function, ['Accounting, Auditing', 'Admin, Office Support & Services','Agriculture, Forestry, Environmental & Fishing', 'Banking, Finance, Insurance & Stockbroking', 'Chemical , Petrochemical, Oil & Gas','Construction, Design, Architecture & Property','Education & Training', 'FMCG, Retail, Wholesale & Supply Chain','General Management','Government & NGO','Health, Fitness, Medical & Optometry','Hospitality, Hotel, Catering, Tourism & Travel','Human Resources & Recruitment','IT & Telecommunications','Legal','Matriculants/Graduate/No Experience','Media, Advertising, PR, Publishing & Marketing','Mining','R&D, Science & Scientific Research','Sales & Purchasing','SHEQ & Security Work','Textile/Clothing','Transport, Logistics & Freight'], { prompt:"Select Job Function"}, class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-md-6">
+          <%= form.select :job_industry,['[All]', 'Advertising, Communication & PR','Agriculture, Forestry & Fishing','Armed Forces', 'Art, Culture, Entertainment & Sport','Auditing/Accounting','Automotive Sector','Aviation & Aerospace','Banking','Building & Construction','Call Centre Industry','Chemical, Petrochemical, Oil & Gas','Conservation & Environment','Consulting','Distribution, Transport & Logistics','Education & Training','Electricity, Energy & Water Supply','Engineering','Financial Services', 'Fishing','FMCG & Supply Management','Food & Beverages','Freight, Import & Export','Government','Handcraft & Furniture','Health & Fitness','Hospitality & Catering','HR Services, Recruitment & Selection','Insurances','IT & Internet','Legal','Manufacturing','Media, Audiovisual & Publishing','Medical Technology','Medical, Health & Social Care','Mining & Quarrying','Non-Profit & Voluntary Sector','Office Automation','Other Sectors & Industries','Pharmaceutical Sector','Property & Real Estate','Public Administration','Public Administration & Defence','Public Services','Publishing, Printing & Reproduction','Recreational, Cultural & Sporting Activities','Scientific, Research & Development','Steel Industry','Telecommunication Services','Textiles, Clothing, Leather & Fashion','Travel & Tourism','Wholesale & Retail Trade'], {prompt:"Select preferred job industry"},class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= form.select :salary_range,['0 - 50K Annually R', '50 - 100K Annually R','100 - 150K Annually R','150 - 200K Annually R','200 - 250K Annually R','250 - 300K Annually R','300 - 350K Annually R','350 - 400K Annually R','400 - 450K Annually R','450 - 500K Annually R','500 - 600k Annually R','600 - 700k Annually R','700 - 800k Annually R','800 - 900k Annually R','900K - 1 Million Annually R','1 - 1.25 Million Annually R','1.25 - 1.5 Million Annually R','1.5 - 1.75 Million Annually R','1.75 - 2 Million Annually R','2 Million+ Annually R'], {prompt:"Select preferred salary range"},class: 'form-control' %>
+        </div>
+
+        <div class="form-group col-md-6">
+          <%= form.select :availability,['Immediate', '7 days','2 weeks','1 month','2 months','More than 2 months'], {prompt:"Select availability"},class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%=form.text_field :place_of_birth, class:'form-control', placeholder:'Place of Birth'%>
+      </div>
+
+      <div class="form-group">
+        <span class="badge bg-primary text-light"><i class="fas fa-chalkboard-teacher"></i> Education</span>
+          <hr>
+            <%= form.radio_button(:education_type, "Less than high-school", checked:true) %>
+            <%= form.label(:education_type, "Less than high-school") %> <br>
+            <%= form.radio_button(:education_type, "Matric") %>
+            <%= form.label(:education_type, "Matric") %> <br>
+            <%= form.radio_button(:education_type, "Certificate") %>
+            <%= form.label(:education_type, "Certificate") %> <br>
+            <%= form.radio_button(:education_type, "Diploma") %>
+            <%= form.label(:education_type, "Diploma") %> <br>
+            <%= form.radio_button(:education_type, "Degree", id:'#radio_button_quilifications' ) %>
+            <%= form.label(:education_type, "Degree") %> <br>
+      </div>
+
+
+      <span class="badge bg-primary text-light"><i class="fas fa-network-wired"></i> Socail Links </span> <br>
+       <hr>
+       <div class="form-group">
+         <div class="input-group mb-3">
+           <div class="input-group-prepend">
+             <label class="input-group-text" for="inputGroupSelect01"> <i class="fab fa-facebook"></i></label>
+           </div>
+           <%= form.text_field :facebook, class: 'form-control', placeholder:'Example: /tlangelani.felender',  required: :required %>
+         </div>
+       </div>
+
+       <div class="form-group">
+         <div class="input-group mb-3">
+           <div class="input-group-prepend">
+             <label class="input-group-text" for="inputGroupSelect01"><i class="fab fa-linkedin"></i></label>
+           </div>
+           <%= form.text_field :linked_in, class: 'form-control', placeholder:'Example: peter-maluleka-7b151b31',  required: :required %>
+         </div>
+       </div>
+
+       <div class="form-group">
+         <div class="input-group mb-3">
+           <div class="input-group-prepend">
+             <label class="input-group-text" for="inputGroupSelect01"><i class="fab fa-twitter-square"></i></label>
+           </div>
+           <%= form.text_field :twitter, class: 'form-control', placeholder:'@felender7',  required: :required %>
+         </div>
+       </div>
+
+      <div class="form-group jumbotron jumbotron-sm border-top-reviews"">
+        <small id="passwordHelpBlock" class="form-text text-danger">
+          Upload Picture - 128 x 128 PIXELS
+        </small>
+        <%= form.file_field :avatar, class: 'form-control-file', accept: 'image/jpeg', direct_upload: true  %>
+      </div>
+
+      <hr>
+      <div class="form-group">
+        <% if cv.persisted? %>
+          <div class="float-right">
+            <%= link_to 'Destroy', cv, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+
+        <%= form.button(type: "submit", class: "btn btn-primary" , data: {disable_with:"<i class='fa fa-spinner fa-spin'></i> Saving..." .html_safe }) do %>
+           <i class="fas fa-save"></i> SAVE
+        <% end %>
+
+
+        <% if cv.persisted? %>
+          <%= link_to "Cancel", cv, class: "btn btn-link" %>
+        <% else %>
+          <%= link_to "Cancel", cvs_path, class: "btn btn-link" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <%=render'shared/tracking'%>
+  </div>
+</div> <!--row end !-->
+</div><!--container end !-->
+<% end %>

@@ -1,0 +1,233 @@
+<div class="container-fluid">
+  <div class="shadow-sm p-3 mb-5 bg-light ">
+      <div class="row">
+        <div class="col-md-8 text-muted">
+          <h4><i class="far fa-list-alt"></i> <%= @user.name %> </h4>
+        </div>
+        <div class="col-md-4">
+          <a href="/users" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+        </div>
+      </div>
+  </div>
+<% if @display_cv.empty? %>
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-lg-12 col-md-6 jumbotron text-center text-primary">
+    <h1 ><span class="badge bg-primary text-light"><i class="far fa-user"></i> </span></h1>
+    Nothing in Profile
+  </div>
+  </div>
+</div>
+
+  <%else%>
+  <div class="shadow-sm p-3 mb-5 bg-white border-top-reviews">
+  <div class="row">
+  <%@display_cv.each do |display_cv| %>
+    <div class="col-lg-2 text-center">
+      <% if display_cv.avatar.attached? %>
+        <%= image_tag display_cv.avatar.variant(resize:"150x150"), class:"rounded margin-bottom-20" %>
+      <%else%>
+      <%= image_tag ("placeholder_avatar.png"), height: 150, width: 150, class: "rounded margin-bottom-20" %>
+      <%end%>
+      <div class="star-rating" data-score=<%= @avg_review %> ></div> <br>
+      <em class="text-muted"> <%= pluralize(@reviews.length, "review") %> </em>  <hr>
+      <%if @reviews.blank?%>
+      <%else%>
+        <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning text-light"%>
+       <%end%>
+
+    </div>
+    <div class="col-lg-6">
+      <div class="table-responsive-sm">
+          <table class="table table-sm">
+          <strong><p class="text-primary"><i class="far fa-list-alt"></i> CURRICULUM VITEA</p></strong>
+            <tbody>
+              <tr class="d-flex"></tr>
+           </tbody>
+
+              <tr>
+                <td><strong>Full Name:</strong></td>
+                <td><%=@user.name%></td>
+              </tr>
+              <tr>
+                <td><strong>Email:</strong></td>
+                <td><%=@user.email%></td>
+              </tr>
+              <tr>
+                <td><strong>ID/Passport:</strong></td>
+                <td>  <%= display_cv.id_passport%> <br>
+                  <%if display_cv.identification_type == "ID" %>
+                    <small class="badge bg-primary text-light"><i class="fas fa-user"></i> ID|South African Citizen
+                      </small>
+                    <%else%>
+                    <small class="badge bg-primary text-light"><i class="fas fa-user"></i> Passport |
+                      <small>Non South African Citizen</small>
+                    </small>
+                    <%end%>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Date of Birth:</strong></td>
+                <td><%= display_cv.date_of_birth %></td>
+              </tr>
+
+               <tr>
+                 <td><strong>Gender:</strong></td>
+                 <td><%= display_cv.gender %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Ethnicity:</strong></td>
+                 <td><%= display_cv.ethnicity %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Place of Birth:</strong></td>
+                 <td><%= display_cv.place_of_birth %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Disability:</strong></td>
+                 <td><%= display_cv.disability %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Job Function:</strong></td>
+                 <td><%= display_cv.job_function %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Job Industry:</strong></td>
+                 <td><%= display_cv.job_industry %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Availability:</strong></td>
+                 <td><%= display_cv.availability %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Salary Range:</strong></td>
+                 <td><%= display_cv.salary_range %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Education:</strong></td>
+                 <td><%= display_cv.education_type %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>Verification:</strong></td>
+                 <td><%if @user.varification == true %>
+                  <span class="badge bg-success text-light"><i class="fas fa-check-double"></i> Verified</span>
+                  <%else%>
+                  <span class="badge bg-danger text-light"><i class="fas fa-times-circle"></i> Not Verified </span>
+                   <%end%>
+                 </td>
+               </tr>
+
+               <tr>
+                 <td><strong>Facebook:</strong></td>
+                 <td><%= display_cv.facebook %></td>
+               </tr>
+               <tr>
+                 <td><strong>Twitter:</strong></td>
+                 <td><%= display_cv.twitter %></td>
+               </tr>
+
+               <tr>
+                 <td><strong>LinkedIn:</strong></td>
+                 <td><%= display_cv.linked_in %></td>
+               </tr>
+            <%end%>
+          </table>
+
+          <div class="table-responsive">
+            <table class="table table-hover  bg-warning ">
+              <strong><p class="text-primary"><i class="far fa-user-circle"></i> REFERANCES</p></strong>
+              <hr>
+              <tbody>
+                <thead>
+                   <th>INSTITUTION</th>
+                   <th>CONTACT PERSON</th>
+                   <th>POSTION</th>
+                   <th>CONTACT NUMBER</th>
+                </thead>
+                <% @display_referrals.each do |display_referrals| %>
+                     <tr width="100%">
+                      <td><%=display_referrals.institution%></td>
+                      <td><%=display_referrals.contact_person%></td>
+                      <td><%=display_referrals.position%></td>
+                      <td>+27<%=display_referrals.contact_number%></td>
+                     </tr>
+
+                  <%end%>
+              </tbody>
+            </table>
+          </div>
+          <br>
+        <%if current_user.profile_type == "Business"%>
+          <div class="table-responsive ">
+            <table class="table table-hover jumbotron">
+              <strong><p class="text-primary"><i class="far fa-folder"></i> DOCUMENTS</p></strong>
+              <hr>
+              <tbody>
+                <% @display_documents.each do |display_document| %>
+                  <%= content_tag :tr, id: dom_id(display_document), class: dom_class(display_document) do %>
+                  <tr class="active">
+                    <td width="100%">
+                      <i class="far fa-file-pdf text-danger"></i> <%= display_document.title %> <br>
+                      <small class="text-muted"><%=(display_document.file.byte_size)/ 1000.0%> bytes</small>
+                    </td>
+
+                    <td><span class="badge bg-primary " ><%= link_to display_document.file, download:'' do %>
+                      <i class="fas fa-file-download text-light" data-toggle="tooltip" title="Download" ></i></span>
+                      <%end%>
+                      </td>
+                      <% end %>
+                  <% end %>
+                <tr>
+              </tbody>
+            </table>
+          </div>
+          <%end%>
+      </div>
+      </div>
+      <div class="col-lg-4">
+       <strong><p class="text-primary">REVIEWS</p></strong>
+       <hr>
+       <%if @reviews.blank?%>
+         <p class="text-muted">No reviews just yet, would you like to add the first!</p>
+         <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning text-light"%>
+         <%else%>
+         <%@reviews.each do|review|%>
+           <div class="my-3 p-3 bg-white rounded shadow-sm border-top-reviews" >
+          <div class="reviews text-muted">
+             <div class="star-rating" data-score=<%= review.rating %> ></div>
+             <p><%=review.comment%></p>
+          </div>
+
+          <!-- action-->
+          <% if user_signed_in? %>
+                <hr>
+              <% if review.user_id == current_user.id %>
+              <div class="links btn-group">
+              <%= link_to  edit_user_review_path(review.user, review) do %>
+              <span class="badge bg-primary text-light " ><i class="fas fa-edit"></i> Edit</span>
+              <%end%>
+              <%= link_to user_review_path(review.user, review), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <span class="badge bg-danger text-light " ><i class="fas fa-trash"> </i> Destroy </span>
+              <%end%>
+              </div>
+              <% end %>
+          <% end %>
+           <!-- action end-->
+        </div>
+       <%end%>
+      <%end%>
+       <%= will_paginate @reviews, list_classes: %w(pagination justify-content-end),renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      </div>
+      </div>
+      </div>
+
+  <% end %>

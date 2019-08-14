@@ -1,0 +1,64 @@
+<!-- Marketing messaging and featurettes
+     ================================================== -->
+     <!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+  <h2 class="display-5">Our Processes</h2>
+    <hr>
+     <div class="row">
+       <div class="col-lg-4">
+         <div class="card profile-card-2">
+              <div class="card-img-block">
+                <%=image_tag('register_online.jpg', class:'img-fluid')%>
+              </div>
+              <div class="card-body pt-5">
+                   <%=image_tag('register_mini.jpg', class:"profile")%>
+                  <h4 class="card-title">Register online</h4>
+                  <p class="card-text">Register online, get user name & password...</p>
+                  <a class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon text-muted" title="Share" data-toggle="tooltip" data-placement="bottom" title="Share">share</a>
+                  <a href="/about/register_online" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon text-muted" title="Read more" data-toggle="tooltip" data-placement="bottom" title="Read more" >more_vert</a>
+              </div>
+          </div>
+       </div><!-- /.col-lg-4 -->
+
+       <div class="col-lg-4">
+         <div class="card profile-card-2">
+              <div class="card-img-block">
+                <%=image_tag('verification.jpg', class:'img-fluid')%>
+              </div>
+              <div class="card-body pt-5">
+                   <%=image_tag('verification_mini.jpg', class:"profile")%>
+                  <h4 class="card-title">Verification</h4>
+                  <p class="card-text">The ID and qualifications  - Vafified <i class="text-primary fas fa-check-circle"></i> <br>
+                    References - Vafified <i class="text-primary fas fa-check-circle"></i>
+
+                  </p>
+
+                  <a class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon text-muted" title="Share">share</a>
+                  <a  href="/about/verification"class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon text-muted" title="Read more" data-toggle="tooltip" data-placement="bottom" title="Read more" >more_vert</a>
+              </div>
+          </div>
+       </div><!-- /.col-lg-4 -->
+
+       <div class="col-lg-4">
+         <div class="card profile-card-2">
+              <div class="card-img-block">
+                <%=image_tag('job_placement.jpg', class:'img-fluid')%>
+              </div>
+              <div class="card-body pt-5">
+                   <%=image_tag('job_placement_mini.jpg', class:"profile")%>
+                  <h4 class="card-title">Job placement</h4>
+                  <p class="card-text">Companies will be able to find the best match...</p>
+                  <a class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon text-muted" title="Share">share</a>
+                  <a href="/about/job_placement" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon text-muted" title="Read more" data-toggle="tooltip" data-placement="bottom" title="Read more" >more_vert</a>
+              </div>
+          </div>
+        </div>
+     </div><!-- /.row -->
+</div>
+
+<script type="text/javascript">
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
