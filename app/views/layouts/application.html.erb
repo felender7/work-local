@@ -8,7 +8,7 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/notices' %>
     <%if user_signed_in?%>
-    <div data-pjax-container class="mt-5" >
+    <div data-pjax-container >
         <%= yield %>
     </div>
     <%else%>

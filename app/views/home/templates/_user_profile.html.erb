@@ -1,0 +1,46 @@
+
+<!-- Figure -->
+<figure class="shadow-sm p-3 mb-5 border-top-reviews">
+<div class="d-flex justify-content-start g-bg-teal--hover g-bg-white g-rounded-4 g-transition-0_3 g-transition--ease-in-out g-pa-30 ">
+    <!-- Figure Image -->
+    <%= image_tag gravatar_image_url(current_user.email, size:150), class: "align-self-center mr-4 rounded thunbnail"  %>
+    <!-- Figure Image -->
+
+    <!-- Figure Info -->
+    <div class="d-block align-self-center">
+      <h5 class="g-color-white--hover g-font-weight-600 g-font-size-16 g-transition-0_3 mb-2 text-muted"><%=current_user.name%></h5>
+
+      <!-- Figure Social Icons -->
+      <ul class="list-inline mb-0">
+        <li class="list-inline-item g-mx-3">
+          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-white--hover rounded-circle" href="#">
+            <i class="fab fa-twitter-square"></i>
+          </a>
+        </li>
+        <li class="list-inline-item g-mx-3">
+          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-white--hover rounded-circle" href="#">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li class="list-inline-item g-mx-3">
+          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-color-white--hover rounded-circle" href="#">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </li>
+      </ul>
+      <span class="badge bg-warning"><i class="fas fa-user-lock"></i> #Work00<%=current_user.id%></span>
+      <span class="badge bg-success text-light">
+        <i class="far fa-building"></i>
+        <%=current_user.profile_type%></span>
+        <span class="badge bg-secondary text-light"> <i class="far fa-envelope-open"></i> <%=current_user.email%></span> <br> <br>
+      <!-- End Figure Social Icons -->
+     <hr>
+      <small class="text-muted">
+         Created | <i class="fas fa-clock"></i> <%=time_ago_in_words(current_user.created_at) +" ago" %>
+      </small>
+    </div>
+
+    <!-- End Figure Info -->
+  </div>
+</figure>
+<!-- End Figure -->

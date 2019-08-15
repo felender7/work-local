@@ -1,6 +1,6 @@
-<ul class="list-inline">
+<ul class="list-inline ">
    <% @company_details.each do |company_detail|%>
-   <li class="list-inline-item">
+   <li class="list-inline-item ">
      <% if company_detail.company_logo.attached? %>
      <%=link_to  company_detail do %>
        <%= image_tag company_detail.company_logo.variant(resize:"130x130"), height: 100, width: 100,class:"rounded margin-bottom-20 img-border" %>
