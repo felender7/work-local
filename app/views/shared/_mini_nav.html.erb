@@ -17,11 +17,11 @@
     <a class="nav-link" href="/find_jobs"><i class="far fa-user"></i> Find Jobs <span class="badge bg-primary text-light"><%=@jobs_count%></span> </a>
     <a class="nav-link" href="/summary"><i class="far fa-file"></i> Summary  </a>
        <%else%>
-     <a class="nav-link" href="/company_details"><i class="far fa-building"></i></i> Company Details <span class="badge bg-primary text-light">1</span></a>
+     <a class="nav-link" href="/company_details"><i class="far fa-building"></i> Company Details <span class="badge bg-primary text-light">1</span></a>
      <a class="nav-link" href="/jobs"><i class="far fa-folder "></i> Jobs <span class="badge bg-primary text-light"> <%=current_user.jobs.count%></span></a>
     <%end%>
     <%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %>
-  </a>
+
   </nav>
 </div>
 <%end%>

@@ -3,6 +3,7 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
 
+  get 'admin_dashboard', to: 'admin_dashboard#index'
   resources :referrals
   get 'service_provider', to: 'service_provider#index' ,   via: 'get'
   get '/service_provider/:id', to: 'service_provider#show' ,   via: 'get'

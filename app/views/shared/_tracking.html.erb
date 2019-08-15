@@ -1,8 +1,8 @@
 
 <% if current_user.profile_type == "Individual" %>
-<div class="shadow-sm p-3 mb-5 bg-primary text-light">
+<div class="shadow-sm p-3 mb-5 bg-dark text-light">
   <h4>Steps</h4>
-  <table class="table table-sm">
+  <table class="table table-sm text-light">
     <tbody>
       <tr>
         <td><strong>1</strong> Create Profile  </td>
@@ -11,6 +11,15 @@
       <tr>
       <td><strong>2</strong> Create CV  </td>
         <%if current_user.cvs.exists? %>
+          <td><i class="fas fa-check-circle "></i></td>
+        <%else%>
+          <td><i class="text-danger fas fa-times-circle"></i></td>
+        <%end%>
+      </tr>
+
+      <tr>
+      <td><strong>3</strong> Add Reference  </td>
+        <%if current_user.referrals.exists? %>
           <td><i class="fas fa-check-circle"></i></td>
         <%else%>
           <td><i class="text-danger fas fa-times-circle"></i></td>
@@ -18,7 +27,7 @@
       </tr>
 
       <tr>
-      <td><strong>3</strong> Upload Documents  </td>
+      <td><strong>4</strong> Upload Documents  </td>
         <%if current_user.documents.exists? %>
           <td><i class="fas fa-check-circle"></i></td>
         <%else%>
@@ -27,8 +36,8 @@
       </tr>
 
       <tr>
-      <td><strong>3</strong> One-time Payment  </td>
-          <td><i class="fas fa-check-circle"></i></td>
+      <td><strong>5</strong> One-time Payment  </td>
+          <td><i class="text-danger fas fa-times-circle"></i></td>
       </tr>
     </tbody>
   </table>
@@ -37,7 +46,7 @@
 <% else current_user.profile_type == "Company" %>
 <div class="shadow-sm p-3 mb-5 bg-primary text-light">
   <h4>Steps</h4>
-  <table class="table table-sm">
+  <table class="table table-sm text-light">
     <tbody>
       <tr>
         <td><strong>1</strong> Create Profile  </td>

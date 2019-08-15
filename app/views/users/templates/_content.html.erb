@@ -1,58 +1,59 @@
 <%=render'shared/search_service_provider'%>
+
 <div class="container">
-  <h3 class="text-center text-dark">Service Providers that might interest you:</h3>
-       <h6 class="border-bottom border-gray pb-2 mb-0">Service Providers</h6>
 
-       <%@users.each do |user| %>
-      <div class="my-3 p-3 bg-white rounded shadow-sm border-top-reviews">
-       <div class="media text-muted pt-3">
-         <%user.cvs.each do|cv_details| %>
-           <% if cv_details.avatar.attached? %>
-             <%= image_tag cv_details.avatar.variant(resize:"52x52"), height: 52, width: 52, class:"bd-placeholder-img mr-2 rounded img-border" %>
-             <%else%>
-           <svg class="bd-placeholder-img mr-2 rounded" width="52" height="52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect fill="#007bff" width="100%" height="100%"/><text fill="#fff" dy=".3em" x="30%" y="50%"><%=user.name[0..1].upcase %></text></svg>
-           <%end%>
-        <%end%>
+    <h3 class="text-center text-muted">Service Providers that might interest you:</h3>
+    <h6 class="border-bottom border-gray pb-2 mb-0">Service Providers</h6>
 
-         <div class="media-body pb-2 mb-0 small lh-125 ">
-           <div class="d-flex justify-content-between align-items-center w-100">
-             <strong class="text-gray-dark">@<%= link_to user.name.titlecase, user%></strong>
-             <a href="#">Follow</a>
-           </div>
-           <span class="d-block">
-           <%user.cvs.each do|cv_details| %>
-            <small class="text-muted">
-              <%if cv_details.gender == "Male"%>
+  <%@users.each do |user| %>
+  <div class="my-3 p-3 bg-white rounded shadow-sm border-top-reviews">
+    <div class="media text-muted pt-3">
+      <%user.cvs.each do|cv_details| %>
+      <% if cv_details.avatar.attached? %>
+      <%= image_tag cv_details.avatar.variant(resize:"52x52"), height: 52, width: 52, class:"bd-placeholder-img mr-2 rounded img-border" %>
+      <%else%>
+      <svg class="bd-placeholder-img mr-2 rounded" width="52" height="52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect fill="#007bff" width="100%" height="100%"/><text fill="#fff" dy=".3em" x="30%" y="50%"><%=user.name[0..1].upcase %></text></svg>
+      <%end%>
+      <%end%>
+
+      <div class="media-body pb-2 mb-0 small lh-125 ">
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <strong class="text-gray-dark">@<%= link_to user.name.titlecase, user%></strong>
+          <a href="#">Follow</a>
+        </div>
+        <span class="d-block">
+          <%user.cvs.each do|cv_details| %>
+          <small class="text-muted">
+            <%if cv_details.gender == "Male"%>
             <i class="fas fa-male"></i>  <%=cv_details.gender%>
-              <%else%>
-              <i class="fas fa-female"></i>  <%=cv_details.gender%>
+            <%else%>
+            <i class="fas fa-female"></i>  <%=cv_details.gender%>
 
-              <%end%>
-             | <i class="fas fa-industry"></i> <%=cv_details.job_industry%></small> <%end%></span>
+            <%end%>
+            | <i class="fas fa-industry"></i> <%=cv_details.job_industry%></small> <%end%></span>
             <%if user.varification == true %>
-             <span class="badge bg-success text-light"><i class="fas fa-check-double"></i> Verified</span>
-             <%else%>
-             <span class="badge bg-danger text-light"><i class="fas fa-times-circle"></i> Not Verified </span>
-              <%end%>
-              <span class="badge bg-primary text-light"><i class="fas fa-certificate"></i> Tapscore - 8/10</span> <br>
-              <span class="badge bg-primary text-light"><i class="fas fa-clock"></i> updated: <%=time_ago_in_words(user.updated_at) +" ago" %></span>
-               <%user.cvs.each do|cv_details| %>
-              <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a  class="brand-facebook"  href="https://facebook.com/<%=cv_details.facebook%>" target="_blank"><i class="fab fa-facebook"></i></a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="brand-twitter"  href="https://twitter.com/<%=cv_details.twitter%>" target="_blank"><i class="fab fa-twitter-square"></i></a>
-                </li>
+            <span class="badge bg-success text-light"><i class="fas fa-check-double"></i> Verified</span>
+            <%else%>
+            <span class="badge bg-danger text-light"><i class="fas fa-times-circle"></i> Not Verified </span>
+            <%end%>
+            <span class="badge bg-primary text-light"><i class="fas fa-certificate"></i> Tapscore - 8/10</span> <br>
+            <span class="badge bg-primary text-light"><i class="fas fa-clock"></i> updated: <%=time_ago_in_words(user.updated_at) +" ago" %></span>
+            <%user.cvs.each do|cv_details| %>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a  class="brand-facebook"  href="https://facebook.com/<%=cv_details.facebook%>" target="_blank"><i class="fab fa-facebook"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a class="brand-twitter"  href="https://twitter.com/<%=cv_details.twitter%>" target="_blank"><i class="fab fa-twitter-square"></i></a>
+              </li>
 
-                <li class="list-inline-item">
-                    <a  class="brand-linkedin" href="https://za.linkedin.com/in/<%=cv_details.linked_in%>" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </li>
-              </ul>
-              <%end%>
-         </div>
-       </div>
-     </div>
-       <%end%><!--end loop-->
-
-</div> <!--end container-->
+              <li class="list-inline-item">
+                <a  class="brand-linkedin" href="https://za.linkedin.com/in/<%=cv_details.linked_in%>" target="_blank"><i class="fab fa-linkedin"></i></a>
+              </li>
+            </ul>
+            <%end%>
+          </div>
+        </div>
+      </div>
+      <%end%><!--end loop-->
+  </div>   <!--end container-->

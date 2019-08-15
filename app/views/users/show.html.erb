@@ -141,11 +141,13 @@
                </tr>
             <%end%>
           </table>
-
+        <% if @display_referrals.present? %>
           <div class="table-responsive">
-            <table class="table table-hover  bg-warning ">
+            <table class="table  bg-primary text-light ">
               <strong><p class="text-primary"><i class="far fa-user-circle"></i> REFERANCES</p></strong>
-              <hr>
+              <tbody>
+                <tr class="d-flex"></tr>
+             </tbody>
               <tbody>
                 <thead>
                    <th>INSTITUTION</th>
@@ -165,6 +167,7 @@
               </tbody>
             </table>
           </div>
+          <%end%>
           <br>
         <%if current_user.profile_type == "Business"%>
           <div class="table-responsive ">
@@ -205,12 +208,14 @@
           <div class="reviews text-muted">
              <div class="star-rating" data-score=<%= review.rating %> ></div>
              <p><%=review.comment%></p>
+             <hr>
+             <small class="text-muted"><%=review.user.name%></small>
           </div>
 
           <!-- action-->
           <% if user_signed_in? %>
                 <hr>
-              <% if review.user_id == current_user.id %>
+            <% if review.user_id == current_user.id %>
               <div class="links btn-group">
               <%= link_to  edit_user_review_path(review.user, review) do %>
               <span class="badge bg-primary text-light " ><i class="fas fa-edit"></i> Edit</span>

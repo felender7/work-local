@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   before_action :display_user_content, only:[:show]
   before_action :authenticate_user!, only:[:show]
-  
 
-  def index
+
+
+    def index
     @users = User.where(profile_type: "Individual").order("updated_at DESC")
-
+    @cvs = Cv.all
+    @referrals = Referral.all
   end
 
   def edit
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.friendly.find(params[:id])
-    @reviews = Review.where(user_id: @user.id).paginate(:page => params[:page], :per_page => 4).order('created_at DESC')
+    @reviews = Review.all.paginate(:page => params[:page], :per_page => 4).order('created_at DESC')
 
     if @reviews.blank?
       @avg_review = 0

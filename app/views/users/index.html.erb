@@ -1,1 +1,6 @@
-<%=render'users/templates/content'%>
+
+<% if @cvs.empty? && @referrals.empty? %>
+  <%=render'users/templates/no_content'%>
+<%else%>
+  <%=render'users/templates/content'%>
+<%end%>

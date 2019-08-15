@@ -1,18 +1,21 @@
-<div class="jumbotron jumbotron-fluid bg-primary text-light text-center  ">
-  <h3>Find Jobs on @work</h3>
-    <p><%=Job.count%> Jobs in South Africa</p>
-    <div class="row">
-      <div class="container">
-      <div class="col-lg-6 col-md-6 ml-auto mr-auto">
-      <%= form_tag(find_jobs_path, method: :get, class: "form-inline", role: 'search' , width:500) do %>
-          <div class="input-group container">
-             <%= text_field_tag :term_job, params[:term_job], id: 'job_search', autocomplete: :off, placeholder: 'Search...', class: 'form-control typeahead' %>
-                 <div class="input-group-btn search-panel">
-                <%= submit_tag 'Search', name: nil, class: "btn btn-default" %>
-              </div>
-            </div>
-        <% end %>
-      </div><!--col end-->
-    </div><!--container end-->
-  </div><!--row end-->
+<div class="search mt-5">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-xl-7 col-lg-8">
+        <h3 class="mb-0">Find Jobs on @work</h3>
+        <p class="text-white-50">
+          <%=Job.count%> Jobs in South Africa</p>
+        <div id="mc_embed_signup">
+          <%= form_tag(find_jobs_path, method: :get, class: "form-inline", role: 'search') do %>
+              <div class="input-group container">
+                 <%= text_field_tag :term_job, params[:term_job], id: 'job_search', autocomplete: :off, placeholder: 'Search...', class: 'form-control' %>
+                     <div class="input-group-append">
+                    <%= submit_tag 'Search', name: nil, class: "btn btn-light" %>
+                  </div>
+                </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

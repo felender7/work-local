@@ -115,7 +115,7 @@ span a{
  h4{text-transform: uppercase;}
 .jumbotron {border-radius: 1px;}
 .btn {border-radius: 1px;}
-.badge{border-radius: 1.25rem;}
+.badge{border-radius: 0.25rem;}
 .form-inline .form-control{border-radius:1px; width: 400px}
 .find_jobs_index.card{border-radius: 1px}
 .pagelayout{min-height: 100vh; background-color: #f5f5f5;}
@@ -129,4 +129,114 @@ span a{
   font-size: 2.5rem;
   font-weight: 300;
   line-height: 1.2;
+}
+
+
+.search {
+    background-color: #0077B5;
+    background-size: cover;
+    background: url(asset_path("overlay.svg")),linear-gradient(45deg,#0077B5 0%,#365899 100%);
+    color: #fff;
+    padding: 5rem 0;
+}
+
+.input-group-prepend,
+.input-group-append {
+ display:flex
+}
+.input-group-prepend .btn,
+.input-group-append .btn {
+ position:relative;
+ z-index:2
+}
+.input-group-prepend .btn:focus,
+.input-group-append .btn:focus {
+ z-index:3
+}
+.input-group-prepend .btn+.btn,
+.input-group-prepend .btn+.input-group-text,
+.input-group-prepend .input-group-text+.input-group-text,
+.input-group-prepend .input-group-text+.btn,
+.input-group-append .btn+.btn,
+.input-group-append .btn+.input-group-text,
+.input-group-append .input-group-text+.input-group-text,
+.input-group-append .input-group-text+.btn {
+ margin-left:-1px
+}
+.input-group-prepend {
+ margin-right:-1px
+}
+.input-group-append {
+ margin-left:-1px
+}
+.input-group-text {
+ display:flex;
+ align-items:center;
+ padding:.375rem .75rem;
+ margin-bottom:0;
+ font-size:1rem;
+ font-weight:400;
+ line-height:1.5;
+ color:#495057;
+ text-align:center;
+ white-space:nowrap;
+ background-color:#e9ecef;
+ border:1px solid #ced4da;
+ border-radius:.25rem
+}
+.input-group-text input[type=radio],
+.input-group-text input[type=checkbox] {
+ margin-top:0
+}
+.input-group-lg>.form-control:not(textarea),
+.input-group-lg>.custom-select {
+ height:calc(1.5em + 1rem + 2px)
+}
+.input-group-lg>.form-control,
+.input-group-lg>.custom-select,
+.input-group-lg>.input-group-prepend>.input-group-text,
+.input-group-lg>.input-group-append>.input-group-text,
+.input-group-lg>.input-group-prepend>.btn,
+.input-group-lg>.input-group-append>.btn {
+ padding:.5rem 1rem;
+ font-size:1.25rem;
+ line-height:1.5;
+ border-radius:.5rem
+}
+.input-group-sm>.form-control:not(textarea),
+.input-group-sm>.custom-select {
+ height:calc(1.5em + .5rem + 2px)
+}
+.input-group-sm>.form-control,
+.input-group-sm>.custom-select,
+.input-group-sm>.input-group-prepend>.input-group-text,
+.input-group-sm>.input-group-append>.input-group-text,
+.input-group-sm>.input-group-prepend>.btn,
+.input-group-sm>.input-group-append>.btn {
+ padding:.25rem .5rem;
+ font-size:.875rem;
+ line-height:1.5;
+ border-radius:.2rem
+}
+.input-group-lg>.custom-select,
+.input-group-sm>.custom-select {
+ padding-right:1.75rem
+}
+.input-group>.input-group-prepend>.btn,
+.input-group>.input-group-prepend>.input-group-text,
+.input-group>.input-group-append:not(:last-child)>.btn,
+.input-group>.input-group-append:not(:last-child)>.input-group-text,
+.input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+.input-group>.input-group-append:last-child>.input-group-text:not(:last-child) {
+ border-top-right-radius:0;
+ border-bottom-right-radius:0
+}
+.input-group>.input-group-append>.btn,
+.input-group>.input-group-append>.input-group-text,
+.input-group>.input-group-prepend:not(:first-child)>.btn,
+.input-group>.input-group-prepend:not(:first-child)>.input-group-text,
+.input-group>.input-group-prepend:first-child>.btn:not(:first-child),
+.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child) {
+ border-top-left-radius:0;
+ border-bottom-left-radius:0
 }

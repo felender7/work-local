@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :get_counts
   before_action :calculating_tap_score
   before_action :calculating_avarage_rating
-
+  before_action :check_cvs
 
   protected
       def configure_permitted_parameters
@@ -48,4 +48,11 @@ class ApplicationController < ActionController::Base
         @avg_review = current_user.reviews.count
       end
     end
+
+  def check_cvs
+    if user_signed_in?
+      @get_cvs = Cv.all
+    end
+  end
+
   end
