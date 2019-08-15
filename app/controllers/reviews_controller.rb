@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @user, notice: 'Review was successfully created.' }
+        format.html { redirect_to users_path, notice: 'Review was successfully created.' }
       else
         format.html { render :new }
       end
@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @user, notice: 'Review was successfully updated.' }
+        format.html { redirect_to users_path, notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -42,7 +42,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to @user, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to users_path, notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

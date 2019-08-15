@@ -208,23 +208,22 @@
           <div class="reviews text-muted">
              <div class="star-rating" data-score=<%= review.rating %> ></div>
              <p><%=review.comment%></p>
-             <hr>
-             <small class="text-muted"><%=review.user.name%></small>
           </div>
-
           <!-- action-->
           <% if user_signed_in? %>
-                <hr>
+          <hr>
+          <small class="text-muted">@<%=review.user.name%> <br>
             <% if review.user_id == current_user.id %>
-              <div class="links btn-group">
+              <div class="links btn-group pull-right">
               <%= link_to  edit_user_review_path(review.user, review) do %>
-              <span class="badge bg-primary text-light " ><i class="fas fa-edit"></i> Edit</span>
+              <span class="btn btn-primary btn-sm text-light " ><i class="fas fa-edit"></i> </span>
               <%end%>
               <%= link_to user_review_path(review.user, review), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <span class="badge bg-danger text-light " ><i class="fas fa-trash"> </i> Destroy </span>
+              <span class="btn btn-danger btn-sm text-light " ><i class="fas fa-trash"> </i>  </span>
               <%end%>
               </div>
               <% end %>
+              </small>
           <% end %>
            <!-- action end-->
         </div>
