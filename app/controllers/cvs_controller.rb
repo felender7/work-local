@@ -17,6 +17,15 @@ class CvsController < ApplicationController
   # GET /cvs/1
   # GET /cvs/1.json
   def show
+    @user = User.friendly.find(params[:id])
+    @display_reviews = @user.reviews.all.paginate(:page => params[:page], :per_page => 4).order('created_at DESC')
+
+    if @display_reviews.blank?
+      @avg_review = 0
+    else
+        @avg_review = @display_reviews.average(:rating).present? ? @display_reviews.average(:rating).round(2) : 0
+      end
+  end
   end
 
   # GET /cvs/new

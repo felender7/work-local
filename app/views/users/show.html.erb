@@ -30,8 +30,8 @@
       <%= image_tag ("placeholder_avatar.png"), height: 150, width: 150, class: "rounded margin-bottom-20" %>
       <%end%>
       <div class="star-rating" data-score=<%= @avg_review %> ></div> <br>
-      <em class="text-muted"> <%= pluralize(@reviews.length, "review") %> </em>  <hr>
-      <%if @reviews.blank?%>
+      <em class="text-muted"> <%= pluralize(@display_reviews.length, "review") %> </em>  <hr>
+      <%if @display_reviews.blank?%>
       <%else%>
         <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning text-light"%>
        <%end%>
@@ -199,39 +199,44 @@
       <div class="col-lg-4">
        <strong><p class="text-primary">REVIEWS</p></strong>
        <hr>
-       <%if @reviews.blank?%>
+       <%if @display_reviews.blank?%>
          <p class="text-muted">No reviews just yet, would you like to add the first!</p>
+
          <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning text-light"%>
+
          <%else%>
-         <%@reviews.each do|review|%>
+         <%@display_reviews.each do|review|%>
            <div class="my-3 p-3 bg-white rounded shadow-sm border-top-reviews" >
           <div class="reviews text-muted">
-             <div class="star-rating" data-score=<%= review.rating %> ></div>
+             <div class="star-rating" data-score=<%=@avg_review %> ></div>
              <p><%=review.comment%></p>
           </div>
-          <!-- action-->
-          <% if user_signed_in? %>
-          <hr>
-          <small class="text-muted">@<%=review.user.name%> <br>
-            <% if review.user_id == current_user.id %>
-              <div class="links btn-group pull-right">
-              <%= link_to  edit_user_review_path(review.user, review) do %>
-              <span class="btn btn-primary btn-sm text-light " ><i class="fas fa-edit"></i> </span>
-              <%end%>
-              <%= link_to user_review_path(review.user, review), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <span class="btn btn-danger btn-sm text-light " ><i class="fas fa-trash"> </i>  </span>
-              <%end%>
-              </div>
-              <% end %>
-              </small>
-          <% end %>
-           <!-- action end-->
         </div>
        <%end%>
       <%end%>
-       <%= will_paginate @reviews, list_classes: %w(pagination justify-content-end),renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+       <%= will_paginate @display_reviews, list_classes: %w(pagination justify-content-end),renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
       </div>
       </div>
       </div>
 
   <% end %>
+
+  <script>
+    $('#star-rating').raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets/'
+    });
+  </script>
+
+  <script>
+    $('.star-rating').raty({
+      readOnly: true,
+      path: '/assets/',
+      score: function() {
+        return $(this).attr('data-score')
+      }
+    });
+  </script>

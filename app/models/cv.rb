@@ -18,6 +18,7 @@ class Cv < ApplicationRecord
   validate :correct_image_type
   has_one_attached :avatar
   belongs_to :user , optional: true
+  belongs_to :book
   has_many :referrals, inverse_of: :cvs
   accepts_nested_attributes_for :referrals, reject_if: :all_blank, allow_destroy: true
 

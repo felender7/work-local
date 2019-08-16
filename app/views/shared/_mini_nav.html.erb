@@ -4,6 +4,10 @@
     <%=link_to root_path, class:"nav-link active" do %>
     <i class="fas fa-tachometer-alt"></i> Dashboard
     <%end%>
+    <%if current_user.admin?%>
+    admin
+      <%else%>
+
     <%if current_user.profile_type == "Individual"%>
     <a class="nav-link" href="/cvs"><i class="far fa-list-alt"></i> My Resume <span class="badge bg-primary text-light"> <%=@cv_count%></span> </a>
     <a class="nav-link" href="/referrals"><i class="far fa-user-circle"></i> My References <span class="badge bg-primary text-light"> <%=@referral_count%></span> </a>
@@ -21,7 +25,7 @@
      <a class="nav-link" href="/jobs"><i class="far fa-folder "></i> Jobs <span class="badge bg-primary text-light"> <%=current_user.jobs.count%></span></a>
     <%end%>
     <%= link_to "What's New", announcements_path, class: "nav-link #{unread_announcements(current_user)}" %>
-
+   <%end%>
   </nav>
 </div>
 <%end%>
