@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :calculating_avarage_rating
   before_action :check_cvs
 
+
   protected
       def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:profile_type, :phone,:varification, :slug])

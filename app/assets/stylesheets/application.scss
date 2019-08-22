@@ -1,6 +1,6 @@
 $white-color                :#fff !important;
 $btn-success-color          :#fff !important;
-
+$blue                       :#2980b9 !default;
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -13,6 +13,7 @@ $btn-success-color          :#fff !important;
 @import "material-components-web.min.css";
 @import "pricing";
 @import "subscriptions";
+
 
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {
@@ -90,7 +91,7 @@ span a{
 #logo{
   font-weight: bold;
   font-size: 25px;
-  color:#2980b9 !important
+  color:$blue !important
 }
 
 #qualification{
@@ -112,7 +113,6 @@ span a{
   -o-background-size: cover;
 }
 .form-inline{ width: 600px}
-.text-success {color: #961c56 !important;}
 .disable-links {pointer-events: none;}
 .btn {text-transform: uppercase;}
  h4{text-transform: uppercase;}
@@ -123,11 +123,10 @@ span a{
 .find_jobs_index.card{border-radius: 1px}
 .pagelayout{min-height: 100vh; background-color: #f5f5f5;}
 .img-border{border: 1px solid #dee2e6;}
-
 .brand-linkedin{color:#0077B5}
 .brand-twitter{color:#1da1f2}
 .brand-facebook{color:#365899}
-.border-top-reviews{border-top: 1px solid #007bff !important }
+.border-top-reviews{border-top: 1px solid $blue !important }
 .display-4 {
   font-size: 2.5rem;
   font-weight: 300;
@@ -136,15 +135,16 @@ span a{
 
 
 .search {
-    background-color: #0077B5;
+    background-color: $blue;
     background-size: cover;
     background: url(asset_path("overlay.svg")),linear-gradient(45deg,#0077B5 0%,#365899 100%);
     color: #fff;
     padding: 5rem 0;
+    width: 100%;
 }
 
 .welcome-card {
-    background-color: #0077B5;
+    background-color: $blue;
     background-size: cover;
     background: url(asset_path("overlay.svg")),linear-gradient(45deg,#0077B5 0%,#365899 100%);
     color: #fff;
@@ -320,4 +320,21 @@ figure {
 img {
     vertical-align: middle;
     border-style: none;
+}
+
+.btn {
+    font-size: 80%;
+    border-radius: 5rem;
+    opacity: 1.7;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+
+
+.input-res
+{
+     width: 100% !important;
+     max-width: 500px !important;;
+     box-sizing: border-box !important;;
 }

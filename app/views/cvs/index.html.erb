@@ -1,6 +1,9 @@
-
+<% if current_user.subscribed? %>
 <div class="container-fluid mt-5">
-  <div class="jumbotron border-top-reviews"">
+  <div class="jumbotron border-top-reviews bg-light shadow-sm">
     <%=render'content'%>
   </div>
 </div>
+<%else%>
+<%=render'shared/not_subscribed'%>
+<%end%>

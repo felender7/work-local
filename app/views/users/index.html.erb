@@ -2,5 +2,10 @@
 <% if @cvs.empty? && @referrals.empty? %>
   <%=render'users/templates/no_content'%>
 <%else%>
-  <%=render'users/templates/content'%>
+<%=render'shared/search_jobs'%>
+<div class="container-fluid">
+  <div class="row">
+    <%=render'users/templates/content'%>
+  </div>
+</div>
 <%end%>

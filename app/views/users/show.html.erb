@@ -23,7 +23,7 @@
   <div class="shadow-sm p-3 mb-5 bg-white border-top-reviews">
   <div class="row">
   <%@display_cv.each do |display_cv| %>
-    <div class="col-lg-2 text-center">
+    <div class="col-lg-3 text-center">
       <% if display_cv.avatar.attached? %>
         <%= image_tag display_cv.avatar.variant(resize:"150x150"), class:"rounded margin-bottom-20" %>
       <%else%>
@@ -34,10 +34,11 @@
       <%if @display_reviews.blank?%>
       <%else%>
         <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning text-light"%>
+        <%=link_to"Show review",user_review_path(@display_reviews), class:"btn btn-sm btn-primary "%>
        <%end%>
 
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-9">
       <div class="table-responsive-sm">
           <table class="table table-sm">
           <strong><p class="text-primary"><i class="far fa-list-alt"></i> CURRICULUM VITEA</p></strong>
@@ -196,25 +197,6 @@
           <%end%>
       </div>
       </div>
-      <div class="col-lg-4">
-       <strong><p class="text-primary">REVIEWS</p></strong>
-       <hr>
-       <%if @display_reviews.blank?%>
-         <p class="text-muted">No reviews just yet, would you like to add the first!</p>
-
-         <%=link_to"Write review",new_user_review_path(@user), class:"btn btn-sm btn-warning text-light"%>
-
-         <%else%>
-         <%@display_reviews.each do|review|%>
-           <div class="my-3 p-3 bg-white rounded shadow-sm border-top-reviews" >
-          <div class="reviews text-muted">
-             <div class="star-rating" data-score=<%=@avg_review %> ></div>
-             <p><%=review.comment%></p>
-          </div>
-        </div>
-       <%end%>
-      <%end%>
-       <%= will_paginate @display_reviews, list_classes: %w(pagination justify-content-end),renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
       </div>
       </div>
       </div>

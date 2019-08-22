@@ -1,6 +1,6 @@
 <%if user_signed_in?%>
     <!-- check which profile the user is login with !-->
-   <%if current_user.profile_type == "Individual" %>
+   <%if current_user.profile_type == "Individual"%>
      <%=render'individual'%>
    <%else current_user.profile_type == "Company"%>
      <%=render'company'%>

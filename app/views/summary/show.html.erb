@@ -1,2 +1,6 @@
 
-    <%=render'summary/templates/content'%>
+<% if current_user.subscribed? %>
+  <%=render'summary/templates/content'%>
+<%else%>
+  <%=render'shared/not_subscribed'%>
+<%end%>

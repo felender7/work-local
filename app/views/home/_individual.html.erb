@@ -1,3 +1,4 @@
+<% if current_user.subscribed? %>
 <div class="container-fluid mt-5">
   <div class="row">
       <div class="col-lg-7">
@@ -50,3 +51,6 @@
   </div>
 </div>
 </div>
+<%else%>
+   <%=render'shared/not_subscribed'%>
+<%end%>

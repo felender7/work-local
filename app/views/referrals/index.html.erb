@@ -1,4 +1,4 @@
-
+<% if current_user.subscribed? %>
 <div class="container-fluid mt-5 ">
   <div class="shadow-sm p-3 bg-light border-top-reviews">
       <div class="row">
@@ -63,4 +63,7 @@
   </div>
   </div>
 </div>
+<%end%>
+<%else%>
+<%=render'shared/not_subscribed'%>
 <%end%>

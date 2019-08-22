@@ -8,6 +8,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container-fluid">
     <%=render'shared/logo'%>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -54,7 +55,7 @@
             <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
-        
+
         <% else %>
         <li class="nav-item"><%= link_to "About us", "/about", class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "Find jobs", "/find_jobs", class: "nav-link" %></li>
@@ -63,6 +64,8 @@
         <% end %>
       </ul>
     </div>
+
   </div>
 </nav>
+
 <%=render'shared/mini_nav'%>

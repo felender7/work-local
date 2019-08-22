@@ -1,6 +1,10 @@
 
-<%if current_user.profile_type == "Individual"%>
-<%=render'jobs/templates/individual'%>
-  <%else%>
-<%=render'jobs/templates/company'%>
+<% if current_user.subscribed? %>
+  <%if current_user.profile_type == "Individual"%>
+  <%=render'jobs/templates/individual'%>
+    <%else%>
+  <%=render'jobs/templates/company'%>
+  <%end%>
+<%else%>
+<%=render'shared/not_subscribed'%>
 <%end%>
