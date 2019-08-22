@@ -1,15 +1,26 @@
 
 <% if current_user.profile_type == "Individual" %>
-<div class="shadow-sm p-3 mb-5 bg-dark text-light">
+<div class="shadow-sm p-3 mb-5 bg-dark text-light border-top-reviews">
   <h4>Steps</h4>
   <table class="table table-sm text-light">
     <tbody>
+
       <tr>
         <td><strong>1</strong> Create Profile  </td>
         <td><i class="fas fa-check-circle"></i></td>
       </tr>
+
       <tr>
-      <td><strong>2</strong> Create CV  </td>
+      <td><strong>2</strong> One-time Payment </td>
+        <%if current_user.subscribed? %>
+          <td><i class="fas fa-check-circle"></i></td>
+        <%else%>
+          <td><i class="text-danger fas fa-times-circle"></i></td>
+        <%end%>
+      </tr>
+
+      <tr>
+      <td><strong>3</strong> Create CV  </td>
         <%if current_user.cvs.exists? %>
           <td><i class="fas fa-check-circle "></i></td>
         <%else%>
@@ -18,7 +29,7 @@
       </tr>
 
       <tr>
-      <td><strong>3</strong> Add Reference  </td>
+      <td><strong>4</strong> Add Reference  </td>
         <%if current_user.referrals.exists? %>
           <td><i class="fas fa-check-circle"></i></td>
         <%else%>
@@ -27,17 +38,12 @@
       </tr>
 
       <tr>
-      <td><strong>4</strong> Upload Documents  </td>
+      <td><strong>5</strong> Upload Documents  </td>
         <%if current_user.documents.exists? %>
           <td><i class="fas fa-check-circle"></i></td>
         <%else%>
           <td><i class="text-danger fas fa-times-circle"></i></td>
         <%end%>
-      </tr>
-
-      <tr>
-      <td><strong>5</strong> One-time Payment  </td>
-          <td><i class="text-danger fas fa-times-circle"></i></td>
       </tr>
     </tbody>
   </table>

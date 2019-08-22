@@ -94,9 +94,6 @@ span a{
   color:$blue !important
 }
 
-#qualification{
-  visibility: hidden;
-}
 
 .text-ajust{margin-top: 92px;margin-left: 115px;}
 .margin-bottom-20{margin-bottom: 20px;}
@@ -126,12 +123,33 @@ span a{
 .brand-linkedin{color:#0077B5}
 .brand-twitter{color:#1da1f2}
 .brand-facebook{color:#365899}
-.border-top-reviews{border-top: 1px solid $blue !important }
-.display-4 {
-  font-size: 2.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-}
+.border-top-reviews{border-top: 4px solid $blue !important }
+.display-4 {font-size: 2.5rem; font-weight: 300;line-height: 1.2;}
+.g-rounded-4 {border-radius: 4px !important;}
+.g-bg-white {background-color: #fff !important;}
+.justify-content-start {-ms-flex-pack: start !important;justify-content: flex-start !important;}
+.d-flex {display: -ms-flexbox !important; display: flex !important;}
+.mr-4, .mx-4 {margin-right: 1.5rem !important;}
+.align-self-center {-ms-flex-item-align: center !important; align-self: center !important;}
+.rounded-circle {border-radius: 50% !important;}
+.welcome-card.card{border: 0px ;}
+.input-group-prepend,
+.input-group-append {display:flex}
+.input-group-prepend .btn,
+.input-group-append .btn {position:relative; z-index:2}
+.input-group-prepend .btn:focus,
+.input-group-append .btn:focus {z-index:3}
+.input-group-prepend .btn+.btn,
+.input-group-prepend .btn+.input-group-text,
+.input-group-prepend .input-group-text+.input-group-text,
+.input-group-prepend .input-group-text+.btn,
+.input-group-append .btn+.btn,
+.input-group-append .btn+.input-group-text,
+.input-group-append .input-group-text+.input-group-text,
+.input-group-append .input-group-text+.btn {margin-left:-1px}
+.input-group-prepend {margin-right:-1px}
+.input-group-append {margin-left:-1px}
+img {vertical-align: middle; border-style: none;}
 
 
 .search {
@@ -152,39 +170,6 @@ span a{
 
 }
 
-.welcome-card.card{
-    border: 0px ;
-  }
-
-.input-group-prepend,
-.input-group-append {
- display:flex
-}
-.input-group-prepend .btn,
-.input-group-append .btn {
- position:relative;
- z-index:2
-}
-.input-group-prepend .btn:focus,
-.input-group-append .btn:focus {
- z-index:3
-}
-.input-group-prepend .btn+.btn,
-.input-group-prepend .btn+.input-group-text,
-.input-group-prepend .input-group-text+.input-group-text,
-.input-group-prepend .input-group-text+.btn,
-.input-group-append .btn+.btn,
-.input-group-append .btn+.input-group-text,
-.input-group-append .input-group-text+.input-group-text,
-.input-group-append .input-group-text+.btn {
- margin-left:-1px
-}
-.input-group-prepend {
- margin-right:-1px
-}
-.input-group-append {
- margin-left:-1px
-}
 .input-group-text {
  display:flex;
  align-items:center;
@@ -200,14 +185,9 @@ span a{
  border:1px solid #ced4da;
  border-radius:.25rem
 }
-.input-group-text input[type=radio],
-.input-group-text input[type=checkbox] {
- margin-top:0
-}
+.input-group-text input[type=radio], .input-group-text input[type=checkbox] {margin-top:0}
 .input-group-lg>.form-control:not(textarea),
-.input-group-lg>.custom-select {
- height:calc(1.5em + 1rem + 2px)
-}
+.input-group-lg>.custom-select { height:calc(1.5em + 1rem + 2px)}
 .input-group-lg>.form-control,
 .input-group-lg>.custom-select,
 .input-group-lg>.input-group-prepend>.input-group-text,
@@ -258,19 +238,13 @@ span a{
 }
 
 
-
-
-
 figure {
   display: block;
   margin-block-start: 1px;
   margin-block-end: 1px;
-
 }
 
-.g-pa-30 {
-  padding: 2.14286rem !important;
-}
+.g-pa-30 {padding: 2.14286rem !important;}
 .g-transition--ease-in-out {
   -webkit-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
@@ -292,49 +266,20 @@ figure {
   -o-transition-delay: 0s;
   transition-delay: 0s;
 }
-.g-rounded-4 {
-  border-radius: 4px !important;
-}
-.g-bg-white {
-  background-color: #fff !important;
-}
-.justify-content-start {
-  -ms-flex-pack: start !important;
-  justify-content: flex-start !important;
-}
-.d-flex {
-  display: -ms-flexbox !important;
-  display: flex !important;
-}
 
-.mr-4, .mx-4 {
-    margin-right: 1.5rem !important;
-}
-.align-self-center {
-    -ms-flex-item-align: center !important;
-    align-self: center !important;
-}
-.rounded-circle {
-    border-radius: 50% !important;
-}
-img {
-    vertical-align: middle;
-    border-style: none;
-}
 
 .btn {
-    font-size: 80%;
-    border-radius: 5rem;
-    opacity: 1.7;
-    -webkit-transition: all 0.2s;
-    transition: all 0.2s;
+  font-size: 80%;
+  border-radius: 5rem;
+  opacity: 1.7;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
-
 
 
 .input-res
 {
-     width: 100% !important;
-     max-width: 500px !important;;
-     box-sizing: border-box !important;;
+  width: 100% !important;
+  max-width: 500px !important;;
+  box-sizing: border-box !important;;
 }

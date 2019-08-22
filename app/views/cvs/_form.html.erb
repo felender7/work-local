@@ -1,5 +1,5 @@
 <%= form_with(model: cv, local: true) do |form| %>
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-3">
 <div class="row">
   <div class="col-lg-8">
     <div class="shadow-sm p-3 mb-5 bg-light">
@@ -17,7 +17,7 @@
       </div>
      </span>
       <div class="form-group">
-        <%=form.text_field :id_passport, class:'form-control', placeholder:'ID/Passport',required: :required%>
+        <%=form.text_field :id_passport, class:'form-control', placeholder:'ID/Passport',required: :required , maxlength:"13"%>
       </div>
 
       <div class="form-group">
@@ -69,7 +69,7 @@
       </div>
 
       <div class="form-group">
-        <%=form.text_field :place_of_birth, class:'form-control', placeholder:'Place of Birth'%>
+        <%=form.text_field :place_of_birth, class:'form-control', placeholder:'Place of Birth', id: "address-input"%>
       </div>
 
       <div class="form-group">
@@ -151,3 +151,11 @@
 </div> <!--row end !-->
 </div><!--container end !-->
 <% end %>
+
+<script>
+  var placesAutocomplete = places({
+    appId: "pl5VKKWRM02F" ,
+    apiKey: "c73f5a6566267711c73a47fff5995a1e",
+    container: document.querySelector("#address-input")
+  });
+</script>

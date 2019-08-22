@@ -1,8 +1,6 @@
 <% if current_user.subscribed? %>
-<div class="container-fluid mt-5">
-  <div class="jumbotron border-top-reviews bg-light shadow-sm">
-    <%=render'content'%>
-  </div>
+<div class="container-fluid mt-5">  
+    <%=render'cvs/templates/content'%>
 </div>
 <%else%>
 <%=render'shared/not_subscribed'%>
