@@ -25,7 +25,7 @@
           </div>
           <div class="col">
             <span class="text-muted"><%=@job.company_detail.company_name.upcase%>  </span>
-            <h3 class="text-primary"><%= @job.title.titlecase %></h3>
+            <h5 class="text-primary"><%= @job.title.titlecase %></h5>
                 <ul class="list-inline">
                   <small class="text-muted">
                   <li class="list-inline-item"><i class="fas fa-map-marker-alt"></i> <%= @job.city %></li>
@@ -41,7 +41,11 @@
                 R<%= @job.salary %> - <%= @job.salary_type %>
                 <%end%>
               </span> <br><br>
-              <a href="#" class="btn btn-primary">Apply Now</a>
+              <% if subscribed? %>
+
+                 <%= link_to 'Apply', applied_jobs_path(@job, type: "apply"), method: :put, class: "btn btn-primary" %>
+                 <% end %>
+
               <a href="#" class="btn btn-secondary"><i class="fas fa-share-alt"></i> </a>
               <a href="#" onclick="printFunction()" class="btn btn-secondary"><i class="fas fa-print"></i> </a></div>
 
@@ -49,11 +53,11 @@
       </div><!--card-header-end-->
       <div class="card-body">
       <strong class="text-primary">DUTIES </strong> <br>
-        <span class="text-muted"><%= @job.duties.html_safe %></span> <br> <br>
+      <span class="text-muted text-justify"><%= @job.duties.html_safe %></span> <br> <br>
 
 
       <strong class="text-primary">REQUIREMENTS </strong> <br>
-       <span class="text-muted"><%= @job.requirements.html_safe %></span> <br>
+       <small class="text-muted text-justify"><%= @job.requirements.html_safe %></small> <br>
 
       </div>
     </div>
@@ -68,6 +72,7 @@
         <%end%> <br> <br>
         <strong class="text-muted "><%=@job.company_detail.company_name.upcase%></strong> <br>
              <span class="badge bg-primary text-light"><%=@job.company_detail.industry %></span>
+              <span class="badge bg-primary text-light"> <%=@job.company_detail.jobs.count %></span>
 
               <hr>
           <%=link_to 'Company Profile', @job.company_detail, class:"btn btn-sm btn-secondary"%>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_131118) do
+ActiveRecord::Schema.define(version: 2019_08_21_132245) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2019_03_08_131118) do
     t.string "announcement_type"
     t.string "name"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "applied_jobs", force: :cascade do |t|
+    t.integer "cv_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -186,6 +193,13 @@ ActiveRecord::Schema.define(version: 2019_03_08_131118) do
     t.boolean "varification", default: false
     t.integer "tap_score"
     t.string "slug"
+    t.string "stripe_id"
+    t.string "stripe_subscription_id"
+    t.string "card_last4"
+    t.integer "card_exp_month"
+    t.integer "card_exp_year"
+    t.string "card_type"
+    t.boolean "subscribed"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true

@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :applied_jobs]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :current_user_jobs, only:[:show]
   before_action :check_current_profile, only:[:index, :new]
@@ -45,6 +45,22 @@ class JobsController < ApplicationController
     end
   end
 
+  def applied_jobs
+    type = params[:type]
+    if type == "apply"
+      current_user.applied_job_additions << @job
+      redirect_to applied_jobs_index_path, notice: "#{@job.title} was added to your Job library"
+
+    elsif type == "remove"
+      current_user.applied_job_additions.delete(@job)
+      redirect_to root_path, notice: "#{@job.title} was removed from your Job library"
+    else
+      # Type missing, nothing happens
+      redirect_to job_path(@job), notice: "Looks like nothing happened. Try once more!"
+    end
+
+  end
+
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
@@ -80,12 +96,12 @@ class JobsController < ApplicationController
       params.require(:job).permit(:title, :description, :city, :work_type, :contract_type, :company_detail_id, :duties, :salary, :salary_type, :requirements, :slug)
     end
 
-    # check if the user is authorised to edit,update or destroy the cv
+    # check if the user is authorised to edit,update or destroy the job
     def correct_user
       @job = current_user.jobs.find_by(params[:friendly])
           redirect_to jobs_path, notice: "Not authorised to edit this job" if @job.nil?
     end
-    # check if  cv belongs to the correct user - current user
+    # check if  job belongs to the correct user - current user
       def current_user_jobs
         if user_signed_in?
           @jobs = current_user.jobs.order("created_at DESC")

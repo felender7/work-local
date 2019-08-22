@@ -1,0 +1,62 @@
+<section class="pricing py-5">
+  <div class="container">
+    <h3 class="text-center text-light ">Choose the best plan that matches your budget.</h3>
+    <div class="row mt-5">
+      <!-- Free Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Standard</h5>
+            <h6 class="card-price text-center">R12<span class="period">/month</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+            </ul>
+            <% if user_signed_in? %>
+              <%= link_to 'Subscribe', new_subscription_path(plan: "standard", plan_id: Rails.application.credentials.standard), class:"btn btn-block btn-primary text-uppercase" %>
+            <% else %>
+              <%= link_to 'Subscribe', new_user_registration_path, class: 'btn btn-block btn-primary text-uppercase' %>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- Plus Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Plus</h5>
+            <h6 class="card-price text-center">R150<span class="period">/year</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5 Users</strong></li>
+
+            </ul>
+            <% if user_signed_in? %>
+              <%= link_to 'Subscribe', new_subscription_path(plan: "plus", plan_id: Rails.application.credentials.plus), class:"btn btn-block btn-primary text-uppercase" %>
+            <% else %>
+              <%= link_to 'Subscribe', new_user_registration_path, class: 'btn btn-block btn-primary text-uppercase' %>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- Pro Tier -->
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Pro</h5>
+            <h6 class="card-price text-center">R270<span class="period">/2yrs</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>10 % discount</strong></li>
+            </ul>
+            <% if user_signed_in? %>
+              <%= link_to 'Subscribe', new_subscription_path(plan: "pro", plan_id: Rails.application.credentials.pro), class:"btn btn-block btn-primary text-uppercase" %>
+            <% else %>
+              <%= link_to 'Subscribe', new_user_registration_path, class: 'btn btn-block btn-primary text-uppercase' %>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

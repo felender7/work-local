@@ -1,4 +1,4 @@
-<title> 🚀  @work </title>
+<title> 🚀 @work </title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -8,5 +8,5 @@
 <%= stylesheet_link_tag    '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <%= javascript_include_tag 'https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js', 'data-turbolinks-track': 'reload' %>
-<link rel="stylesheet" href="jquery.raty.css">
-<script src="jquery.raty.js"></script>
+<%= javascript_include_tag 'https://js.stripe.com/v3/','data-turbolinks-track': 'reload' %>
+<%= tag :meta, name: "stripe-key", content: Rails.application.credentials.stripe_publishable_key %>

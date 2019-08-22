@@ -3,6 +3,10 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
 
+
+  get 'pricing', to: 'pricing#index'
+  resources :subscriptions
+  resources :applied_jobs , only:[:index]
   get 'admin_dashboard', to: 'admin_dashboard#index'
   resources :referrals
   get 'service_provider', to: 'service_provider#index' ,   via: 'get'
@@ -29,7 +33,12 @@ Rails.application.routes.draw do
     resources :reviews, except: [:show]
   end
 
-  resources :jobs
+  resources :jobs do
+    member do
+      put "apply", to:  "jobs#applied_jobs"
+      put "remove", to: "jobs#applied_jobs"
+    end
+end
   resources :company_details
   resources :cvs
   resources :charges
@@ -50,7 +59,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  devise_for :users,:path_prefix => 'd'
+  devise_for :users,:path_prefix => 'd', controllers: { registrations: "registrations" }
   root to: 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

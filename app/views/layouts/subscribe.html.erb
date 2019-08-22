@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render 'shared/head' %>
+  </head>
+
+  <body>
+    <%= render 'shared/navbar_subscribe' %>
+    <%= render 'shared/notices' %>
+    
+    <div data-pjax-container >
+        <%= yield %>
+     </div>
+     <%= render 'shared/footer' %>
+  </body>
+
+
+</html>

@@ -18,7 +18,9 @@
       <a class="nav-link" href="/documents"><i class="far fa-folder"></i> My Documents <span class="badge bg-primary text-light"> <%=@document_count%></span> </a>
     <%end%>
 
-    <a class="nav-link" href="/find_jobs"><i class="far fa-user"></i> Find Jobs <span class="badge bg-primary text-light"><%=@jobs_count%></span> </a>
+      <a class="nav-link" href="/find_jobs"><i class="far fa-user"></i> Find Jobs <span class="badge bg-primary text-light"><%=@jobs_count%></span> </a>
+      <a class="nav-link" href="/applied_jobs"><i class="far fa-book"></i> Applied Jobs <span class="badge bg-primary text-light">0</span> </a>
+
     <a class="nav-link" href="/summary"><i class="far fa-file"></i> Summary  </a>
        <%else%>
      <a class="nav-link" href="/company_details"><i class="far fa-building"></i> Company Details <span class="badge bg-primary text-light">1</span></a>

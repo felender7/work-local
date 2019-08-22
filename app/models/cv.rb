@@ -18,12 +18,9 @@ class Cv < ApplicationRecord
   validate :correct_image_type
   has_one_attached :avatar
   belongs_to :user , optional: true
-  belongs_to :book
   has_many :referrals, inverse_of: :cvs
   accepts_nested_attributes_for :referrals, reject_if: :all_blank, allow_destroy: true
 
-  #has_many :referrals, dependent: :destroy
-  #accepts_nested_attributes_for :referrals, allow_destroy: true, reject_if: proc { |att| att['institution'].blank? }
 
 
   def correct_image_type
@@ -31,7 +28,5 @@ class Cv < ApplicationRecord
       errors.add(:file, 'Must be a JPEG file')
     end
   end
-
-
 
 end

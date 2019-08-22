@@ -11,6 +11,8 @@ $btn-success-color          :#fff !important;
 @import "navscroller";
 @import "simplemde";
 @import "material-components-web.min.css";
+@import "pricing";
+@import "subscriptions";
 
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {
@@ -26,7 +28,9 @@ $btn-success-color          :#fff !important;
   }
 }
 
-
+body{
+  background: #ecf0f1;
+}
 // Masquerade alert shouldn't have a bottom margin
 body > .alert {
   margin-bottom: 0;
@@ -86,6 +90,7 @@ span a{
 #logo{
   font-weight: bold;
   font-size: 25px;
+  color:#2980b9 !important
 }
 
 #qualification{
