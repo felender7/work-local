@@ -10,7 +10,6 @@ class CvsController < ApplicationController
   # GET /cvs.json
   def index
     @cvs = Cv.all
-
   end
 
   # GET /cvs/1

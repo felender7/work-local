@@ -1,6 +1,6 @@
 
 <%if @document_count >= 5%>
-  <div class="container-fluid mt-5">
+  <div class="container-fluid">
     <div class="col-lg-12">
     <div class="row">
     <div class="col-lg-12 col-md-6 jumbotron text-center text-danger border-top-reviews">
@@ -16,7 +16,6 @@
       <div class="col-lg-8">
         <div class="shadow-sm p-3 mb-5 bg-light border-top-reviews">
           <%= render 'errors', document: @document %>
-
           <div class="form-group">
             <%if @identification_type.identification_type =="ID" %>
             <%= form.select :title,['PROOF OF RESIDENCE', ' IDENTITY DOCUMENT', 'QUALIFICATIONS','CURRICULUM VITEA'],{prompt: "Select File Name"}, class: 'form-control' %>

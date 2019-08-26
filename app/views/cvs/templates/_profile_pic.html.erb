@@ -1,0 +1,5 @@
+<% if @display_pic.avatar.attached? %>
+     <%= image_tag(@display_pic.avatar, height: 150, width: 150, class:"rounded margin-bottom-20 img-thumbnail") if @display_pic.avatar %>
+      <%else%>
+  <%= image_tag ("placeholder_avatar.png"), height: 150, width: 150, class: "rounded margin-bottom-20" %>
+<%end%>

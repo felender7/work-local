@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :calculating_tap_score
   before_action :calculating_avarage_rating
   before_action :check_cvs
-
+  before_action :get_profile_pic
 
   protected
       def configure_permitted_parameters
@@ -53,6 +53,12 @@ class ApplicationController < ActionController::Base
   def check_cvs
     if user_signed_in?
       @get_cvs = Cv.all
+    end
+
+    def get_profile_pic
+        if user_signed_in?
+          @display_pic = current_user.cvs.find_by(params[:avatar]) if Cv.present?
+    end
     end
   end
 

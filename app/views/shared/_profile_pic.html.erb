@@ -1,0 +1,6 @@
+
+  <% if @display_pic.avatar.attached? %>
+     <%= image_tag(@display_pic.avatar, height: 20, width: 20, class:"rounded") if @display_pic.avatar %>
+  <%else%>
+    <%= image_tag ("placeholder_avatar.png"), height: 20, width: 20, class: "rounded" %>
+  <%end%>

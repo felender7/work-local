@@ -1,8 +1,8 @@
 
 <div class="container-fluid mt-5">
-  <div class="shadow-sm p-3 bg-light border-top-reviews">
+  <div class="shadow-sm p-3 text-light bg-dark border-top-reviews">
       <div class="row">
-        <div class="col-md-8 text-muted">
+        <div class="col-md-8">
           <h4><i class="far fa-list-alt"></i> DOCUMENT - <%= @document.title %> </h4>
         </div>
         <div class="col-md-4">
@@ -33,8 +33,8 @@
          </tbody>
             <tr>
               <td width="100%"><strong class="text-muted"><%= @document.title %></strong></td>
-              <td><%=link_to @document.file, combine_options: { gravity: 'center', draw: 'image Over 0,0 0,0 "' + Document::WATERMARK_PATH.to_s + '"' } ,download:'' do %>
-                <span class="badge bg-primary text-light"><i class="fas fa-file-download"> </i> </span>
+              <td><%=link_to @document.file ,download:'', class:"btn btn-sm btn-primary " do %>
+                <i class="fas fa-cloud-download-alt"></i>
                <%end%>
               </td>
             </tr>

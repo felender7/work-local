@@ -1,22 +1,20 @@
-<div class="container-fluid">
-  <div class="shadow-sm p-3 bg-light">
+<div class="container-fluid mt-5">
+  <div class="shadow-sm p-3 bg-dark text-light border-top-reviews">
       <div class="row">
-        <div class="col-md-8 text-muted">
+        <div class="col-md-12">
           <h4><i class="far fa-list-alt"></i> Job Summary</h4>
-        </div>
-        <div class="col-md-4">
-          <a href="/" class="float-right text-danger"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
+          <a href="/" class="float-right to-top-sm text-light"> <i class="fa fa-window-close" data-toggle="tooltip" title="Close"> </i></a>
         </div>
       </div>
   </div>
 </div>
-  <div class="container-fluid">
+  <div class="container-fluid mt-3">
   <div class="row">
     <div class="col-lg-8">
-    <div class="card">
+    <div class="card shadow-sm">
       <div class="card-header">
         <div class="row">
-          <div class="col-lg-2">
+          <div class="col-lg-2 text-center">
             <% if  @job.company_detail.company_logo.attached? %>
               <%= image_tag  @job.company_detail.company_logo.variant(resize:"150x150"), height: 100, width: 100, class:"bd-placeholder-img mr-2 rounded img-border " %>
             <%else%>
@@ -24,47 +22,48 @@
             <%end%>
           </div>
           <div class="col">
+            <a href="#" class="btn btn-sm btn-danger float-right"><i class="fas fa-1x fa-heart"></i> </a>
             <span class="text-muted"><%=@job.company_detail.company_name.upcase%>  </span>
             <h5 class="text-primary"><%= @job.title.titlecase %></h5>
                 <ul class="list-inline">
                   <small class="text-muted">
                   <li class="list-inline-item"><i class="fas fa-map-marker-alt"></i> <%= @job.city %></li>
-                  <li class="list-inline-item"><i class="fas fa-clock"></i> <%= @job.work_type %></li>
+                  <li class="list-inline-item"><i class="far fa-clock"></i> <%= @job.work_type %></li>
                   <li class="list-inline-item"><i class="fas fa-briefcase"></i> <%= @job.contract_type %></li>
-                  <li class="list-inline-item"> <i class="fas fa-calendar-alt"></i> Published: <%=time_ago_in_words(@job.created_at) +" ago" %></li>
-                   </small>
+                  <li class="list-inline-item"><i class="far fa-calendar-alt"></i> Published: <%=time_ago_in_words(@job.created_at) +" ago" %></li>
+                  </small>
                 </ul>
-              <span class="badge bg-primary text-light">
+              <span class="badge badge-sm bg-primary text-light">
                 <% if @job.salary_type =="Negotiable"%>
-                 <%= @job.salary_type %>
+                R-<%= @job.salary_type %>
                 <%else%>
                 R<%= @job.salary %> - <%= @job.salary_type %>
                 <%end%>
               </span> <br><br>
               <% if subscribed? %>
+                 <%= link_to 'Apply', applied_jobs_path(@job, type: "apply"), method: :put, class: "btn btn-sm btn-primary" %>
+              <% end %>
 
-                 <%= link_to 'Apply', applied_jobs_path(@job, type: "apply"), method: :put, class: "btn btn-primary" %>
-                 <% end %>
+              <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-share-alt"></i> </a>
+              <a href="#" onclick="printFunction()" class="btn btn-sm btn-secondary"><i class="fas fa-print"></i> </a></div>
 
-              <a href="#" class="btn btn-secondary"><i class="fas fa-share-alt"></i> </a>
-              <a href="#" onclick="printFunction()" class="btn btn-secondary"><i class="fas fa-print"></i> </a></div>
 
       </div>
       </div><!--card-header-end-->
       <div class="card-body">
       <strong class="text-primary">DUTIES </strong> <br>
-      <span class="text-muted text-justify"><%= @job.duties.html_safe %></span> <br> <br>
+      <small class="text-muted text-justify text-line-spacing"><%= @job.duties.html_safe %></small> <br> <br>
 
 
       <strong class="text-primary">REQUIREMENTS </strong> <br>
-       <small class="text-muted text-justify"><%= @job.requirements.html_safe %></small> <br>
+       <small class="text-muted text-justify text-line-spacing"><%= @job.requirements.html_safe %></small> <br>
 
       </div>
     </div>
   </div><!--col-lg-8 end-->
   <div class="col-lg-4">
     <div class="card">
-      <div class="card-body text-center">
+      <div class="card-body text-center border-top-reviews shadow-sm">
         <% if  @job.company_detail.company_logo.attached? %>
           <%= image_tag  @job.company_detail.company_logo.variant(resize:"150x150"), height: 100, width: 100, class:"bd-placeholder-img mr-2 rounded img-border " %>
         <%else%>

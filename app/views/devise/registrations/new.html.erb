@@ -1,8 +1,8 @@
 
-<div class="container-fluid">
-  <div class="row ml-auto mr-auto text-muted">
-    <div class="col-lg-6 col-md-4">
-      <img src="https://image.cnbcfm.com/api/v1/image/106081449-1565889611150red-smiling-party-confetti-colourful-vibrant-friends-happy-celebrate-laughing-girl-friend_t20_mowyd8.jpg?v=1565889729&w=1400&h=950" alt="" class="img-fluid mx-auto d-block">
+<div class="container">
+  <div class="row text-muted">
+    <div class="col-lg-6">
+      <%=image_tag('dream-job.jpg', class:"img-fluid mx-auto d-block")%>
     <div class="jumbotron border-top-reviews shadow-sm welcome-card " style="padding-bottom: 1rem;padding-top: 0rem;">
       <h1 class=" mt-3">Dream Job</h1>
       <p>One step closer with @work placement portal.</p>
@@ -14,7 +14,7 @@
       </div>
     </div>
   </div>
-    <div class="col-lg-6 col-md-6 shadow-sm p-3 mb-5 bg-light border-top-reviews ">
+    <div class="col-lg-6 float-right shadow-sm p-3 mb-5 bg-light border-top-reviews card" style="height: 470px;">
       <h3>Create an account</h3>
        <hr>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

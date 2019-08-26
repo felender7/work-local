@@ -9,6 +9,7 @@ class CompanyDetailsController < ApplicationController
   # GET /company_details.json
   def index
     @company_details = CompanyDetail.all
+
   end
 
   # GET /company_details/1

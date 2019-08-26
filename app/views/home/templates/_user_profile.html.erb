@@ -3,10 +3,11 @@
 <figure class="card shadow-sm p-3 mb-5 border-top-reviews ">
 
 <div class=" d-flex justify-content-start g-bg-teal--hover g-bg-white g-rounded-4 g-transition-0_3 g-transition--ease-in-out g-pa-30 ">
-    <!-- Figure Image -->
-    <%= image_tag gravatar_image_url(current_user.email, size:150), class: "align-self-center mr-4 rounded thunbnail"  %>
-    <!-- Figure Image -->
-    <!-- Figure Info -->
+      <% if @display_pic.avatar.attached? %>
+         <%= image_tag(@display_pic.avatar, height: 100, width: 150, class:"rounded margin-bottom-20 ", style:"margin-right: 20px") if @display_pic.avatar %>
+      <%else%>
+      <%= image_tag ("placeholder_avatar.png"), height: 100, width: 100, class: "rounded margin-bottom-20", style:"margin-right: 20px" %>
+      <%end%>
     <div class="d-block align-self-center">
       <h5 class="g-color-white--hover g-font-weight-600 g-font-size-16 g-transition-0_3 mb-2 text-muted"><%=current_user.name%></h5>
 

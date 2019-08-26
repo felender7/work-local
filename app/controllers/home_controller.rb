@@ -4,6 +4,7 @@ before_action :check_if_user_is_admin
   def index
      @company_details = CompanyDetail.all
      @announcements = Announcement.order(published_at: :desc)
+
   end
 
   def company

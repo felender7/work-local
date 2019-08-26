@@ -48,10 +48,13 @@ a:link {text-decoration: none;}
 a:visited {text-decoration: none;}
 a:hover {text-decoration: none;}
 a:active {text-decoration: none;}
-span a{
-  color: #fff;
-}
+a.to-top {margin-right: -10px;margin-top: -76px;}
+a.to-top-sm {margin-right: -10px;margin-top: -54px;}
 
+span a{color: #fff;}
+
+
+.text-line-spacing{line-height: 25px !important;font-size: 13px !important;}
 /*Profile card 2*/
 .profile-card-2 .card-img-block{
     float:left;
