@@ -1,7 +1,7 @@
-<div class="container-fluid">
-  <div class="shadow-sm p-3 mb-5 bg-light ">
+<div class="container-fluid mt-5">
+  <div class="shadow-sm p-3 bg-dark text-light border-top-reviews ">
       <div class="row">
-        <div class="col-md-8 text-muted">
+        <div class="col-md-8">
           <h4><i class="far fa-list-alt"></i> <%= @user.name %> </h4>
         </div>
         <div class="col-md-4">
@@ -20,7 +20,7 @@
 </div>
 
   <%else%>
-  <div class="shadow-sm p-3 mb-5 bg-white border-top-reviews">
+  <div class="shadow-sm p-3 bg-white border-top-reviews">
   <div class="row">
   <%@display_cv.each do |display_cv| %>
     <div class="col-lg-3 text-center">
@@ -191,6 +191,7 @@
                       <% end %>
                   <% end %>
                 <tr>
+
               </tbody>
             </table>
           </div>
