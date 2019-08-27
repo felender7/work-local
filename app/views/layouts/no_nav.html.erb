@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <%= render 'shared/head' %>
+  </head>
+
+  <body>
+    <%= render 'shared/notices' %>
+    <%if user_signed_in?%>
+    <div data-pjax-container >
+        <%= yield %>
+    </div>
+    <%else%>
+      <%= yield %>
+    <%end%>
+
+  </body>
+
+</html>

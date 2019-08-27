@@ -17,6 +17,7 @@ class User < ApplicationRecord
     has_many :jobs, dependent: :destroy
     has_many :reviews, dependent: :destroy
     has_many :referrals, dependent: :destroy
+    validates :terms_of_service, acceptance: true
 
 
     #searchkick word_start: [:name, :email]
