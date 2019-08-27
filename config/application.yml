@@ -7,9 +7,9 @@
 # stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
 #
  development:
-    stripe_api_key: pk_test_RALaXpQKU3sCkctmU5UqtvAc00b1TxkmW3
+    stripe_api_key: sk_test_4AAX0B2aecMIAp267WyXVER600MQczWtF6
     stripe_publishable_key: pk_test_RALaXpQKU3sCkctmU5UqtvAc00b1TxkmW3
 
  production:
-   stripe_api_key: pk_test_RALaXpQKU3sCkctmU5UqtvAc00b1TxkmW3
+   stripe_api_key: sk_test_4AAX0B2aecMIAp267WyXVER600MQczWtF6
    stripe_publishable_key: pk_test_RALaXpQKU3sCkctmU5UqtvAc00b1TxkmW3

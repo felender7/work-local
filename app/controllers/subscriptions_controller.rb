@@ -10,7 +10,7 @@ class SubscriptionsController < ApplicationController
 
   def create
     #Stripe.api_key = Rails.application.credentials.stripe_api_key
-    Stripe.api_key = "pk_test_RALaXpQKU3sCkctmU5UqtvAc00b1TxkmW3"
+    Stripe.api_key = "sk_test_4AAX0B2aecMIAp267WyXVER600MQczWtF6"
 
     plan_id = params[:plan_id]
     plan = Stripe::Plan.retrieve(plan_id)
