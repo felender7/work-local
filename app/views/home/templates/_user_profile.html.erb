@@ -3,8 +3,12 @@
 <figure class="card shadow-sm p-3 mb-5 border-top-reviews ">
 
 <div class=" d-flex justify-content-start g-bg-teal--hover g-bg-white g-rounded-4 g-transition-0_3 g-transition--ease-in-out g-pa-30 ">
+  <% if current_user.cvs.exists? %>
       <% if @display_pic.avatar.attached? %>
          <%= image_tag(@display_pic.avatar, height: 100, width: 150, class:"rounded margin-bottom-20 ", style:"margin-right: 20px") if @display_pic.avatar %>
+      <%else%>
+      <%= image_tag ("placeholder_avatar.png"), height: 100, width: 100, class: "rounded margin-bottom-20", style:"margin-right: 20px" %>
+      <%end%>
       <%else%>
       <%= image_tag ("placeholder_avatar.png"), height: 100, width: 100, class: "rounded margin-bottom-20", style:"margin-right: 20px" %>
       <%end%>

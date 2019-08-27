@@ -97,7 +97,7 @@ gem 'pjax_rails'
 gem 'jquery-ui-rails'
 gem 'will_paginate-bootstrap4'
 gem 'stripe', '~> 3.13'
-gem 'bulma-rails'
+gem "figaro"
 
 #unused temp gems
 #gem 'pay'

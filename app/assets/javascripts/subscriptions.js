@@ -1,6 +1,6 @@
 document.addEventListener("turbolinks:load", function() {
-  const publishableKey = document.querySelector("meta[name='stripe-key']").content;
-  const stripe = Stripe(publishableKey);
+  const public_key = document.querySelector("meta[name='stripe-public-key']").content;
+  const stripe = Stripe(public_key);
 
   const elements = stripe.elements({
     fonts: [{
