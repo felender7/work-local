@@ -7,11 +7,11 @@
           </div>
            <div class="card-body pt-5">
              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-               <div class="form-group">
+               <div class="form-group form-label-group">
                  <%= f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'form-control' %>
                </div>
 
-               <div class="form-group">
+               <div class="form-group form-label-group">
                  <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control' %>
                </div>
 
