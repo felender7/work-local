@@ -122,7 +122,7 @@ class JobsController < ApplicationController
      # check if  the current user login in can view the page
      def check_current_profile
         if user_signed_in?
-          if current_user.profile_type == "Individual"
+          if current_user.profile_type == "Candidate"
             redirect_to root_path , notice:"Not authorised to view this page"
           end
         end

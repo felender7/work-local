@@ -17,12 +17,12 @@ class ApplicationController < ActionController::Base
 
       def get_counts
         if user_signed_in?
-          @service_provider_count = User.where(profile_type: "Individual").count
+          @service_provider_count = User.where(profile_type: "Candidate").count
           @referral_count = current_user.referrals.count
           @document_count = current_user.documents.count
           @cv_count = current_user.cvs.count
-          @applicants_count = User.where(:profile_type => "Individual").count
-          if current_user.profile_type == "Individual"
+          @applicants_count = User.where(:profile_type => "Candidate").count
+          if current_user.profile_type == "Candidate"
             @jobs_count = Job.all.count
           else
             @jobs_count = Job.where(:user_id => current_user).count

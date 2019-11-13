@@ -11,7 +11,7 @@ private
 
   def check_current_profile
      if user_signed_in?
-       if current_user.profile_type == "Individual"
+       if current_user.profile_type == "Candidate"
          redirect_to root_path , notice:"Not authorised to view this page"
        end
      end

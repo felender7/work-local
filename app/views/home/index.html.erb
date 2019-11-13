@@ -1,8 +1,8 @@
 <%if user_signed_in?%>
     <!-- check which profile the user is login with !-->
-   <%if current_user.profile_type == "Individual"%>
+   <%if current_user.profile_type == "Candidate"%>
      <%=render'individual'%>
-   <%else current_user.profile_type == "Company"%>
+   <%else current_user.profile_type == "Employer"%>
      <%=render'company'%>
   <%end%>
 <!-- else render the guset layout !-->

@@ -1,5 +1,5 @@
 
-<% if current_user.profile_type == "Individual" %>
+<% if current_user.profile_type == "Candidate" %>
 <div class="shadow-sm p-3 mb-5 bg-dark text-light border-top-reviews">
   <h4>Steps</h4>
   <table class="table table-sm text-light">
@@ -49,7 +49,7 @@
   </table>
 </div>
 
-<% else current_user.profile_type == "Company" %>
+<% else current_user.profile_type == "Employer" %>
 <div class="shadow-sm p-3 mb-5 bg-primary text-light">
   <h4>Steps</h4>
   <table class="table table-sm text-light">

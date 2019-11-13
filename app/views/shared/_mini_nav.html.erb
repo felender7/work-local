@@ -8,7 +8,7 @@
     admin
       <%else%>
 
-    <%if current_user.profile_type == "Individual"%>
+    <%if current_user.profile_type == "Candidate"%>
     <a class="nav-link" href="/cvs"><i class="far fa-list-alt"></i> My Resume <span class="badge bg-primary text-light"> <%=@cv_count%></span> </a>
     <a class="nav-link" href="/referrals"><i class="far fa-user-circle"></i> My References <span class="badge bg-primary text-light"> <%=@referral_count%></span> </a>
 
